@@ -1,0 +1,721 @@
+ <!DOCTYPE html>
+ <html>
+   <head>
+     <meta charset="utf-8">
+     <title>Maplestory Stat Calculator</title>
+
+     <!-- Bootstrap core CSS -->
+     <link rel="stylesheet" href="./bootstrap-4.4.1-dist/css/bootstrap.min.css">
+
+     <!-- Custome styles for this template -->
+     <link rel="stylesheet" href="./bootstrap-4.4.1-dist/css/bootstrap.css">
+     <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/cover/">
+
+    <meta name="msapplication-config" content="/docs/4.4/assets/img/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#563d7c">
+
+    <!-- Custom styles for this template -->
+    <link href="./bootstrap-4.4.1-dist/cover.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+   </head>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <script type="text/javascript">
+    var jobCode = "none";
+
+     function job_reader(val){
+
+       if(val == "Warrior"){
+         document.getElementById("C_Warrior").style.display ="inline";
+         document.getElementById("C_Magician").style.display ="none";
+         document.getElementById("C_Thief").style.display ="none";
+         document.getElementById("C_Bowman").style.display ="none";
+         document.getElementById("C_Pirate").style.display ="none";
+       }else if(val == "Magician"){
+         document.getElementById("C_Warrior").style.display ="none";
+         document.getElementById("C_Magician").style.display ="inline";
+         document.getElementById("C_Thief").style.display ="none";
+         document.getElementById("C_Bowman").style.display ="none";
+         document.getElementById("C_Pirate").style.display ="none";
+       }else if(val == "Thief"){
+         document.getElementById("C_Warrior").style.display ="none";
+         document.getElementById("C_Magician").style.display ="none";
+         document.getElementById("C_Thief").style.display ="inline";
+         document.getElementById("C_Bowman").style.display ="none";
+         document.getElementById("C_Pirate").style.display ="none";
+       }else if(val == "Bowman"){
+         document.getElementById("C_Warrior").style.display ="none";
+         document.getElementById("C_Magician").style.display ="none";
+         document.getElementById("C_Thief").style.display ="none";
+         document.getElementById("C_Bowman").style.display ="inline";
+         document.getElementById("C_Pirate").style.display ="none";
+       }else if(val == "Pirate"){
+         document.getElementById("C_Warrior").style.display ="none";
+         document.getElementById("C_Magician").style.display ="none";
+         document.getElementById("C_Thief").style.display ="none";
+         document.getElementById("C_Bowman").style.display ="none";
+         document.getElementById("C_Pirate").style.display ="inline";
+       }
+     }
+     //job reading -end
+
+     function jobClass_reader(val){
+       //ini
+       document.getElementById("W_W1").style.display ="none";
+       document.getElementById("W_W2").style.display ="none";
+       document.getElementById("W_M1").style.display ="none";
+       document.getElementById("W_T1").style.display ="none";
+       document.getElementById("W_T2").style.display ="none";
+       document.getElementById("W_B1").style.display ="none";
+       document.getElementById("W_B2").style.display ="none";
+       document.getElementById("W_P1").style.display ="none";
+       document.getElementById("W_P2").style.display ="none";
+
+       //전사
+       if( val == "W1" || val == "W3"){
+         document.getElementById("W_W1").style.display ="inline";
+       }else if( val == "W2" ){
+         document.getElementById("W_W2").style.display ="inline";
+       }
+
+       //마법사
+       if( val == "M1" || val == "M2" || val == "M3" ){
+         document.getElementById("W_M1").style.display ="inline";
+       }
+
+       //도적
+       if( val == "T1" ){
+         document.getElementById("W_T1").style.display ="inline";
+       }else if( val == "T2" ){
+         document.getElementById("W_T2").style.display ="inline";
+       }
+
+       //궁수
+       if( val == "B1" ){
+         document.getElementById("W_B1").style.display ="inline";
+       }else if( val == "B2" ){
+         document.getElementById("W_B2").style.display ="inline";
+       }
+
+       //해적
+       if( val == "P1" ){
+         document.getElementById("W_P1").style.display ="inline";
+       }else if( val == "P2" ){
+         document.getElementById("W_P2").style.display ="inline";
+       }
+
+       if( document.getElementById("C_Magician").value == "M1"){
+        document.getElementById("skill2").innerText = "제네시스";
+        document.getElementById("skill2").value = "제네시스";
+       }else if( document.getElementById("C_Magician").value == "M2"){
+        document.getElementById("skill2").innerText = "블리자드";
+        document.getElementById("skill2").value = "블리자드";
+       }else if( document.getElementById("C_Magician").value == "M3"){
+        document.getElementById("skill2").innerText = "메테오";
+        document.getElementById("skill2").value = "메테오";
+       }
+     }
+     //jobClass reading -end
+
+     function select_return(val){
+       if( val == "W1W1" || val == "W1W2" || val == "W2W1" || val == "W2W2" || val == "B1W1" || val == "B2W1" || val == "P1W1" || val == "P2W1" ){
+         document.getElementById("STR").disabled =false;
+         document.getElementById("DEX").disabled =false;
+         document.getElementById("INT").disabled =true;
+         document.getElementById("LUK").disabled =true;
+
+         document.getElementById("STR").value = "";
+         document.getElementById("DEX").value = "";
+         document.getElementById("INT").value = 0;
+         document.getElementById("LUK").value = 0;
+
+         document.getElementById("skill_name").innerText = "--";
+
+         document.getElementById("skill").style.display = "none";
+       }else if( val == "T1W1" || val == "T2W1" ){
+         document.getElementById("STR").disabled =false;
+         document.getElementById("DEX").disabled =false;
+         document.getElementById("INT").disabled =true;
+         document.getElementById("LUK").disabled =false;
+
+         document.getElementById("STR").value = "";
+         document.getElementById("DEX").value = "";
+         document.getElementById("INT").value = 0;
+         document.getElementById("LUK").value = "";
+
+         document.getElementById("skill_name").innerText = "--";
+
+         document.getElementById("skill").style.display = "none";
+       }else if( val == "M1W1" || val == "M1W2"){
+         document.getElementById("STR").disabled =true;
+         document.getElementById("DEX").disabled =true;
+         document.getElementById("INT").disabled =false;
+         document.getElementById("LUK").disabled =false;
+
+         document.getElementById("STR").value = 0;
+         document.getElementById("DEX").value = 0;
+         document.getElementById("INT").value = "";
+         document.getElementById("LUK").value = "";
+
+         document.getElementById("skill_name").innerText = "스킬";
+
+         document.getElementById("skill").style.display = "block";
+       }
+       document.getElementById("Code").value = val;
+     }
+     //select_return -end
+
+     function cal(){
+       var code = document.getElementById("Code").value;
+       var str = Number(document.getElementById("STR").value);
+       var dex = Number(document.getElementById("DEX").value);
+       var int = Number(document.getElementById("INT").value);
+       var luk = Number(document.getElementById("LUK").value);
+
+       var at1 = Number(document.getElementById("AT1").value);
+       var at2 = Number(document.getElementById("AT2").value);
+
+       var eat12 = Number(document.getElementById("EAT12").value);
+       var eat13 = Number(document.getElementById("EAT13").value);
+       var eat14 = Number(document.getElementById("EAT14").value);
+       var eat15 = Number(document.getElementById("EAT15").value);
+
+       var eat22 = Number(document.getElementById("EAT22").value);
+       var eat23 = Number(document.getElementById("EAT23").value);
+       var eat24 = Number(document.getElementById("EAT24").value);
+       var eat25 = Number(document.getElementById("EAT25").value);
+
+       var eat32 = Number(document.getElementById("EAT32").value);
+       var eat33 = Number(document.getElementById("EAT33").value);
+       var eat34 = Number(document.getElementById("EAT34").value);
+       var eat35 = Number(document.getElementById("EAT35").value);
+
+       var eat42 = Number(document.getElementById("EAT42").value);
+       var eat43 = Number(document.getElementById("EAT43").value);
+       var eat44 = Number(document.getElementById("EAT44").value);
+
+       var eat52 = Number(document.getElementById("EAT52").value);
+       var eat53 = Number(document.getElementById("EAT53").value);
+
+       var eat62 = Number(document.getElementById("EAT62").value);
+
+       var stat1 = 0;
+       var stat2 = 0;
+       var stat3 = 0;
+       var stat4 = 0;
+
+       at = at1 + at2;
+       at = at + eat12 + eat13 +eat14 +eat15 + eat22 + eat23 +eat24 +eat25 + eat32 + eat33 +eat34 +eat35;
+       at = at + eat42 + eat43 + eat44;
+       at = at + eat52 + eat53 + eat62;
+
+       if( code == "W1W1" ){
+         stat1 = str*4*0.9*0.6+dex;
+         stat2 = str*4+dex;
+       }else if( code == "W1W2" ){
+         stat1 = str*4.6*0.9*0.6+dex;
+         stat2 = str*4.6+dex;
+       }else if( code == "W1W3" ){
+         // //후려치기
+         // stat1 = str*4.4*0.9*0.6+dex;
+         // stat2 = str*4.4+dex;
+         // //찌르기
+         // stat3 = str*3.2*0.9*0.6+dex;
+         // stat4 = str*3.2+dex;
+         stat1 = str*3.2*0.9*0.6+dex;
+         stat2 = str*4.4+dex;
+       }else if( code == "W1W4" ){
+         // //후려치기
+         // stat1 = str*4.8*0.9*0.6+dex;
+         // stat2 = str*4.8+dex;
+         // //찌르기
+         // stat3 = str*3.4*0.9*0.6+dex;
+         // stat4 = str*3.4+dex;
+         stat1 = str*3.4*0.9*0.6+dex;
+         stat2 = str*4.8+dex;
+       }else if( code == "W2W1" ){
+         // //후려치기
+         // stat1 = str*3.0*0.9*0.6+dex;
+         // stat2 = str*3.0+dex;
+         // //찌르기
+         // stat3 = str*5.0*0.9*0.6+dex;
+         // stat4 = str*5.0+dex;
+         stat1 = str*3.0*0.9*0.8+dex;
+         stat2 = str*5.0+dex;
+       }else if( code == "W2W2" ){
+         //후려치기
+         // stat1 = str*5.0*0.9*0.6+dex;
+         // stat2 = str*5.0+dex;
+         //찌르기
+         // stat3 = str*3.0*0.9*0.6+dex;
+         // stat4 = str*3.0+dex;
+         stat1 = str*3.0*0.9*0.8+dex;
+         stat2 = str*5.0+dex;
+       }else if( code == "M1W1" || code == "M1W2"){
+         document.getElementById("DM").innerText = "스킬 데미지";
+         stat1 = 0; stat2 = 0; at = at + int;
+         if( document.getElementById("skill").value == "제네시스"){
+           skill = 770;
+         }else if( document.getElementById("skill").value == "블리자드"){
+           skill = 620;
+         }else if( document.getElementById("skill").value == "메테오"){
+           skill = 620;
+         }else if( document.getElementById("skill").value == "매직클로"){
+           skill = 40;
+         }
+         min1 = parseInt( (0.0033665*at*at + 3.3*at*0.9*0.6 + 0.5*int)*skill/100 );
+         max1 = parseInt( (0.0033665*at*at + 3.3*at + 0.5*int)*skill/100 );
+       }else if( code == "T1W1" || code == "T2W1" ){
+         stat1 = luk*3.6*0.9*0.6+str+dex;
+         stat2 = luk*3.6+str+dex;
+       }else if( code == "B1W1" ){
+         stat1 = dex*3.4*0.9*0.9+str;
+         stat2 = dex*3.4+str;
+       }else if( code == "B2W1" ){
+         stat1 = dex*3.6*0.9*0.9+str;
+         stat2 = dex*3.6+str;
+       }else if( code == "P1W1" ){
+         stat1 = dex*3.6*0.9*0.6+str;
+         stat2 = dex*3.6+str;
+       }else if( code == "P2W1" ){
+         stat1 = str*4.8*0.9*0.6+dex;
+         stat2 = str*4.8+dex;
+       }
+
+       //General Formula
+       if( stat1 > 0 && stat2 >0 ){
+         min1 = parseInt(stat1/100*at);
+         max1 = parseInt(stat2/100*at);
+       }
+
+       //print out
+       document.getElementById("StatAP").value = min1+"~"+max1;
+
+       alert("새로운 계산을 원하실 경우 새로고침을 누루신 후에 이요해주세요!");
+     }
+     // Calculator -end
+
+     function save(){
+       var str = Number(document.getElementById("STR").value);
+       var dex = Number(document.getElementById("DEX").value);
+       var int = Number(document.getElementById("INT").value);
+       var luk = Number(document.getElementById("LUK").value);
+
+       var at1 = Number(document.getElementById("AT1").value);
+       var at2 = Number(document.getElementById("AT2").value);
+
+       var eat12 = Number(document.getElementById("EAT12").value);
+       var eat13 = Number(document.getElementById("EAT13").value);
+       var eat14 = Number(document.getElementById("EAT14").value);
+       var eat15 = Number(document.getElementById("EAT15").value);
+
+       var eat22 = Number(document.getElementById("EAT22").value);
+       var eat23 = Number(document.getElementById("EAT23").value);
+       var eat24 = Number(document.getElementById("EAT24").value);
+       var eat25 = Number(document.getElementById("EAT25").value);
+
+       var eat32 = Number(document.getElementById("EAT32").value);
+       var eat33 = Number(document.getElementById("EAT33").value);
+       var eat34 = Number(document.getElementById("EAT34").value);
+       var eat35 = Number(document.getElementById("EAT35").value);
+
+       var eat42 = Number(document.getElementById("EAT42").value);
+       var eat43 = Number(document.getElementById("EAT43").value);
+       var eat44 = Number(document.getElementById("EAT44").value);
+
+       var eat52 = Number(document.getElementById("EAT52").value);
+       var eat53 = Number(document.getElementById("EAT53").value);
+
+       var eat62 = Number(document.getElementById("EAT62").value);
+
+       var code = document.getElementById("Code").value;
+
+       var data = str + "," + eat12 + "," + eat13 + "," + eat14 + "," + eat15 +"/";
+           data += dex + "," + eat22 + "," + eat23 + "," + eat24 + "," + eat25 + "/";
+           data += int + "," + eat32 + "," + eat33 + "," + eat34 + "," + eat35 + "/";
+           data += luk + "," + eat42 + "," + eat43 + "," + eat44 + "/";
+           data += at1 + "," + eat52 + "," + eat53 + "/";
+           data += at2 + "," + eat62 + "/";
+           data += code + "/";
+
+
+       exportName = "MapleStoryInputData"
+
+       var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(data);
+       var downloadAnchorNode = document.createElement('a');
+       downloadAnchorNode.setAttribute("href", dataStr);
+       downloadAnchorNode.setAttribute("download", exportName + ".sasibu");
+       downloadAnchorNode.click();
+       downloadAnchorNode.remove();
+     }
+     // save -end
+
+     function load(){
+       var input = document.createElement("input");
+       input.type = "file";
+       input.accept = ".sasibu";
+       input.click();
+
+       input.onchange = function (event) {
+         var reader = new FileReader();
+         reader.readAsText(event.target.files[0],"euc-kr");
+
+         reader.onload=function(){
+           var data = String(reader.result);
+           var data0 = data.split("/");
+
+           var data1 = data0[0];
+           var data2 = data0[1];
+           var data3 = data0[2];
+           var data4 = data0[3];
+           var data5 = data0[4];
+           var data6 = data0[5];
+
+           var dat1 = data1.split(",");
+           var dat2 = data2.split(",");
+           var dat3 = data3.split(",");
+           var dat4 = data4.split(",");
+           var dat5 = data5.split(",");
+           var dat6 = data6.split(",");
+           var dat7 = data0[6];
+
+           document.getElementById("STR").value = dat1[0];
+           document.getElementById("DEX").value = dat2[0];
+           document.getElementById("INT").value = dat3[0];
+           document.getElementById("LUK").value = dat4[0];
+             if( dat1[0] >0 ){
+               document.getElementById("STR").disabled = false;
+             }
+             if( dat2[0] >0 ){
+               document.getElementById("DEX").disabled = false;
+             }
+             if( dat3[0] >0 ){
+               document.getElementById("INT").disabled = false;
+             }
+             if( dat4[0] >0 ){
+               document.getElementById("LUK").disabled = false;
+             }
+           document.getElementById("AT1").value = dat5[0];
+           document.getElementById("AT2").value = dat6[0];
+
+           document.getElementById("EAT12").value = dat1[1];
+           document.getElementById("EAT13").value = dat1[2];
+           document.getElementById("EAT14").value = dat1[3];
+           document.getElementById("EAT15").value = dat1[4];
+
+           document.getElementById("EAT22").value = dat2[1];
+           document.getElementById("EAT23").value = dat2[2];
+           document.getElementById("EAT24").value = dat2[3];
+           document.getElementById("EAT25").value = dat2[4];
+
+           document.getElementById("EAT32").value = dat3[1];
+           document.getElementById("EAT33").value = dat3[2];
+           document.getElementById("EAT34").value = dat3[3];
+           document.getElementById("EAT35").value = dat3[4];
+
+           document.getElementById("EAT42").value = dat4[1];
+           document.getElementById("EAT43").value = dat4[2];
+           document.getElementById("EAT44").value = dat4[3];
+
+           document.getElementById("EAT52").value = dat5[1];
+           document.getElementById("EAT53").value = dat5[2];
+
+           document.getElementById("EAT62").value = dat6[1];
+
+           document.getElementById("Code").value = dat7;
+
+           confirm("입력값을 불러왔습니다! 마법사의 경우 스킬 선택 후 계산해주세요!");
+         };
+ 	    };
+    }
+     // load -end
+
+   </script>
+   <body id='cover' class="text-center">
+     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <header>
+            <div class="inner">
+              <h1 class="masthead-brand">Maple Stat Calculator</h1>
+            </div>
+          <!-- <img style=' margin-top:5%; margin-left:20%; margin-right:20%; height:50%; width:50%;' src="https://www.mentor.com/company/news/f1-limitation-on-use-of-cfd-software-could-benefit-more/mainColumnParagraphs/0/column1ColumnParagraphs/0/content_files/file0/Voxdale1_smaller_420.jpg" > -->
+      </header>
+
+      <!-- Main -->
+      <main role="main" class="innercover">
+          <!-- Job Input Table -->
+          <table style="margin:auto; margin-bottom:4%; width:40%;">
+            <thead style="font-size:1.5em;">
+              <td>직업</td>
+              <td>직업 계열</td>
+              <td>무기 종류</td>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div>
+                      <div style="display:inline-block">
+                        <select name="job" onChange="job_reader(this.value)">
+                          <option value="">-</option>
+                          <option value="Warrior">전사</option>
+                          <option value="Magician">마법사</option>
+                          <option value="Thief">도적</option>
+                          <option value="Bowman">궁수</option>
+                          <option value="Pirate">해적</option>
+                        </select>
+                      </div>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                      <div style="display:inline-block">
+                        <select Id="C_Warrior" style="display:none" onChange="jobClass_reader(this.value)">
+                          <option value="">-</option>
+                          <option value="W1">히어로</option>
+                          <option value="W2">다크나이트</option>
+                          <option value="W3">팔라딘</option>
+                        </select>
+                        <select Id="C_Magician" style="display:none" onChange="jobClass_reader(this.value)">
+                          <option value="">-</option>
+                          <option value="M1">비숍</option>
+                          <option value="M2">아크메이지(썬콜)</option>
+                          <option value="M3">아크메이지(불독)</option>
+                        </select>
+                        <select Id="C_Thief" style="display:none" onChange="jobClass_reader(this.value)">
+                          <option value="">-</option>
+                          <option value="T1">나이트로드</option>
+                          <option value="T2">섀도어</option>
+                        </select>
+                        <select Id="C_Bowman" style="display:none" onChange="jobClass_reader(this.value)">
+                          <option value="">-</option>
+                          <option value="B1">보우마스터</option>
+                          <option value="B2">신궁</option>
+                        </select>
+                        <select Id="C_Pirate" style="display:none" onChange="jobClass_reader(this.value)">
+                          <option value="">-</option>
+                          <option value="P1">캡틴</option>
+                          <option value="P2">바이퍼</option>
+                        </select>
+                      </div>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                      <div style="display:inline-block">
+                        <select Id="W_W1" style="display:none" onChange="select_return(this.value)">
+                          <option value="">-</option>
+                          <option value="W1W1">한손검</option>
+                          <option value="W1W2">두손검</option>
+                          <option value="W1W3">한손도끼</option>
+                          <option value="W1W4">두손도끼</option>
+                        </select>
+                        <select Id="W_W2" style="display:none" onChange="select_return(this.value)">
+                          <option value="">-</option>
+                          <option value="W2W1">창</option>
+                          <option value="W2W2">폴암</option>
+                        </select>
+                        <select Id="W_M1" style="display:none" onChange="select_return(this.value)">
+                          <option value="">-</option>
+                          <option value="M1W1">완드</option>
+                          <option value="M1W2">스태프</option>
+                        </select>
+                        <select Id="W_T1" style="display:none" onChange="select_return(this.value)">
+                          <option value="">-</option>
+                          <option value="T1W1">아대</option>
+                        </select>
+                        <select Id="W_T2" style="display:none" onChange="select_return(this.value)">
+                          <option value="">-</option>
+                          <option value="T2W1">단검</option>
+                        </select>
+                        <select Id="W_B1" style="display:none" onChange="select_return(this.value)">
+                          <option value="">-</option>
+                          <option value="B1W1">활</option>
+                        </select>
+                        <select Id="W_B2" style="display:none" onChange="select_return(this.value)">
+                          <option value="">-</option>
+                          <option value="B2W1">석궁</option>
+                        </select>
+                        <select Id="W_P1" style="display:none" onChange="select_return(this.value)">
+                          <option value="">-</option>
+                          <option value="P1W1">총</option>
+                        </select>
+                        <select Id="W_P2" style="display:none" onChange="select_return(this.value)">
+                          <option value="">-</option>
+                          <option value="P2W1">너클</option>
+                        </select>
+                      </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+
+          <!-- Stat Input Table -->
+          <table id="StatInputTable" style="margin:auto">
+            <thead>
+              <tr>
+                <th colspan="2">능력치</th>
+                <th colspan="2">추가 공격력/마력 (방어구)</th>
+                <th colspan="2">추가 공격력/마력 (장신구1)</th>
+                <th colspan="2">추가 공격력/마력 (장신구2)</th>
+                <th colspan="2">추가 공격력/마력 (기타)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>STR</td>
+                <td>
+                  <input type="textbox" Id="STR" maxlength="5" disabled="true">
+                </td>
+                <td>모자</td>
+                <td>
+                  <input type="textbox" Id="EAT12" maxlength="5" placeholder="0">
+                </td>
+                <td>얼굴장식</td>
+                <td>
+                  <input type="textbox" Id="EAT13" maxlength="5" placeholder="0">
+                </td>
+                <td>반지1</td>
+                <td>
+                  <input type="textbox" Id="EAT14" maxlength="5" placeholder="0">
+                </td>
+                <td>훈장</td>
+                <td>
+                  <input type="textbox" Id="EAT15" maxlength="5" placeholder="0">
+                </td>
+              </tr>
+              <tr>
+                <td>DEX</td>
+                <td>
+                  <input type="textbox" Id="DEX" maxlength="5" disabled="true">
+                </td>
+                <td>상의</td>
+                <td>
+                  <input type="textbox" Id="EAT22" maxlength="5" placeholder="0">
+                </td>
+                <td>눈장식</td>
+                <td>
+                  <input type="textbox" Id="EAT23" maxlength="5" placeholder="0">
+                </td>
+                <td>반지2</td>
+                <td>
+                  <input type="textbox" Id="EAT24" maxlength="5" placeholder="0">
+                </td>
+                <td>팻장비</td>
+                <td>
+                  <input type="textbox" Id="EAT25" maxlength="5" placeholder="0">
+                </td>
+              </tr>
+              <tr>
+                <td>INT</td>
+                <td>
+                  <input type="textbox" Id="INT" maxlength="5" disabled="true">
+                </td>
+                <td>하의</td>
+                <td>
+                  <input type="textbox" Id="EAT32" maxlength="5" placeholder="0">
+                </td>
+                <td>목걸이</td>
+                <td>
+                  <input type="textbox" Id="EAT33" maxlength="5" placeholder="0">
+                </td>
+                <td>반지3</td>
+                <td>
+                  <input type="textbox" Id="EAT34" maxlength="5" placeholder="0">
+                </td>
+                <td>기타</td>
+                <td>
+                  <input type="textbox" Id="EAT35" maxlength="5" placeholder="0">
+                </td>
+              </tr>
+              <tr>
+                <td>LUK</td>
+                <td>
+                  <input type="textbox" Id="LUK" maxlength="5" disabled="true">
+                </td>
+                <td>망토</td>
+                <td>
+                  <input type="textbox" Id="EAT42" maxlength="5" placeholder="0">
+                </td>
+                <td>벨트</td>
+                <td>
+                  <input type="textbox" Id="EAT43" maxlength="5" placeholder="0">
+                </td>
+                <td>반지4</td>
+                <td>
+                  <input type="textbox" Id="EAT44" maxlength="5" placeholder="0">
+                </td>
+                <td colspan="2"></td>
+              </tr>
+              <tr>
+                <td>무기 공격력/마력</td>
+                <td>
+                  <input type="textbox" Id="AT1" maxlength="5" placeholder="0">
+                </td>
+                <td>신발</td>
+                <td>
+                  <input type="textbox" Id="EAT52" maxlength="5" placeholder="0">
+                </td>
+                <td>귀걸이</td>
+                <td>
+                  <input type="textbox" Id="EAT53" maxlength="5" placeholder="0">
+                </td>
+                <td colspan="4"></td>
+              </tr>
+              <tr>
+                <td>보조무기 공격력/마력</td>
+                <td>
+                  <input type="textbox" Id="AT2" maxlength="5" placeholder="0">
+                </td>
+                <td>장갑</td>
+                <td>
+                  <input type="textbox" Id="EAT62" maxlength="5" placeholder="0">
+                </td>
+                <td colspan="6"></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table style="margin:auto">
+            <!-- Result -->
+            <tr>
+              <td Id="skill_name">--</td>
+              <td>
+                <select Id="skill" style="display:none">
+                  <option value="">-</option>
+                  <option value="매직클로">매직클로</option>
+                  <option Id="skill2" value="skill2">광역기</option>
+                </select>
+              </td>
+
+              <td Id="DM">스탯 공격력</td>
+              <td>
+                <input type="textbox" Id="StatAP" disabled="true" style="width:80%">
+              </td>
+              <td>직업 코드</td>
+              <td>
+                <input type="textbox" Id="Code" disabled>
+              </td>
+            </tr>
+          </table>
+
+          <!-- Submit -->
+          <div style="margin-top: 2%; margin-bottom: 1%">
+            <button onclick="cal()">계산하기</button>
+            <button onclick="save()">저장하기</button>
+            <button onclick="load()">불러오기</button>
+          </div>
+
+      </main>
+      <!-- Main Tag == end -->
+
+      <footer>
+        <p>&copy; made by Sasibu</p>
+      </footer>
+
+    </div>
+   </body>
+ </html>

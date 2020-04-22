@@ -1,0 +1,152 @@
+/*
+ * Globals
+ */
+
+/* Links */
+a,
+a:focus,
+a:hover {
+  color: #fff;
+}
+
+/* Custom default button */
+#cover .innercover label,
+#cover .filebox label{
+  display: inline-block;
+  padding: .5em .75em;
+  color: #fdfdfd;
+  font-size: inherit;
+  line-height: normal;
+  vertical-align: middle;
+  background-color: #241f1f;
+  cursor: pointer;
+  border: 1px solid #ebebeb;
+  border-bottom-color: #e2e2e2;
+  border-radius: .25em;
+}
+
+#cover .innercover input[type="submit"],
+#cover .innercover input[type="button"],
+#cover .filebox input[type="file"],
+#cover .filebox input[type="submit"]{
+  /* 파일 필드 숨기기 */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip:rect(0,0,0,0);
+  border: 0;
+ }
+
+#cover th,
+#cover tr,
+#cover td{
+  color: rgba(255, 255, 255, .9);
+  border-bottom: 1px solid #fff;
+  padding: 1rem;
+}
+.page_control{
+	caption-side: bottom;
+  text-align: center;
+}
+
+#StatInputTable td{
+  padding: 0.5rem;
+}
+
+/*
+ * Base structure
+ */
+
+html,
+body {
+  height: 100%;
+  background-color: #333;
+}
+
+body {
+  display: -ms-flexbox;
+  display: flex;
+  color: #fff;
+}
+
+
+/*
+ * Header & dropdown
+ */
+.masthead {
+  margin-bottom: 2rem;
+}
+
+.masthead-brand {
+  margin-bottom: 0;
+}
+
+.nav-masthead .nav-link,
+.inner .dropdown button {
+  padding: .25rem 0;
+  margin-right: 2rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, .5);
+  background-color: transparent;
+  border-bottom: .25rem solid transparent;
+}
+
+.nav-masthead .nav-link:hover,
+.nav-masthead .nav-link:focus,
+.inner .dropdown button {
+  border-bottom-color: rgba(255, 255, 255, .25);
+}
+
+.nav-masthead .nav-link + .nav-link {
+  margin-left: 1rem;
+}
+
+.nav-masthead .active {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+.inner .dropdown button{
+  color: #fff;
+  border: none;
+}
+
+.inner .dropdown .dropdown-menu{
+  background-color: #665f5f;
+}
+
+.inner .dropdown .dropdown-item{
+  font-weight: 700;
+}
+
+@media (min-width: 48em) {
+  .masthead-brand {
+    float: left;
+  }
+  .nav-masthead {
+    float: right;
+  }
+}
+
+
+/*
+ * Cover
+ */
+.cover {
+  padding: 0 1.5rem;
+}
+.cover .btn-lg {
+  padding: .75rem 1.25rem;
+  font-weight: 700;
+}
+
+
+/*
+ * Footer
+ */
+.mastfoot {
+  color: rgba(255, 255, 255, .5);
+}
