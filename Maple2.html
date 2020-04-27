@@ -1,0 +1,455 @@
+ <!DOCTYPE html>
+ <html>
+   <head>
+     <meta charset="utf-8">
+     <title>Maplestory Accuracy/Avoidance Calculator</title>
+
+     <!-- Bootstrap core CSS -->
+     <link rel="stylesheet" href="./bootstrap-4.4.1-dist/css/bootstrap.min.css">
+
+     <!-- Custome styles for this template -->
+     <link rel="stylesheet" href="./bootstrap-4.4.1-dist/css/bootstrap.css">
+     <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/cover/">
+
+    <meta name="msapplication-config" content="/docs/4.4/assets/img/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#563d7c">
+
+    <!-- Custom styles for this template -->
+    <link href="./bootstrap-4.4.1-dist/cover.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+   </head>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <script type="text/javascript">
+
+     function job_reader(val){
+       if(val == "Warrior"){
+         document.getElementById("C_Warrior").style.display ="inline";
+         document.getElementById("C_Magician").style.display ="none";
+         document.getElementById("C_Thief").style.display ="none";
+         document.getElementById("C_Bowman").style.display ="none";
+         document.getElementById("C_Pirate").style.display ="none";
+       }else if(val == "Magician"){
+         document.getElementById("C_Warrior").style.display ="none";
+         document.getElementById("C_Magician").style.display ="inline";
+         document.getElementById("C_Thief").style.display ="none";
+         document.getElementById("C_Bowman").style.display ="none";
+         document.getElementById("C_Pirate").style.display ="none";
+       }else if(val == "Thief"){
+         document.getElementById("C_Warrior").style.display ="none";
+         document.getElementById("C_Magician").style.display ="none";
+         document.getElementById("C_Thief").style.display ="inline";
+         document.getElementById("C_Bowman").style.display ="none";
+         document.getElementById("C_Pirate").style.display ="none";
+       }else if(val == "Bowman"){
+         document.getElementById("C_Warrior").style.display ="none";
+         document.getElementById("C_Magician").style.display ="none";
+         document.getElementById("C_Thief").style.display ="none";
+         document.getElementById("C_Bowman").style.display ="inline";
+         document.getElementById("C_Pirate").style.display ="none";
+       }else if(val == "Pirate"){
+         document.getElementById("C_Warrior").style.display ="none";
+         document.getElementById("C_Magician").style.display ="none";
+         document.getElementById("C_Thief").style.display ="none";
+         document.getElementById("C_Bowman").style.display ="none";
+         document.getElementById("C_Pirate").style.display ="inline";
+       }
+     }
+     //job reading -end
+
+     function jobClass_reader(val){
+       document.getElementById("level").disabled =false;
+       document.getElementById("회피율").disabled =false;
+       document.getElementById("명중률").disabled =false;
+
+     }
+     //jobClass reading -end
+
+     function cal(){
+       var jobcode = document.getElementById("Job").value;
+       var mobcode = document.getElementById("Mob").value;
+
+       var avd = Number(document.getElementById("회피율").value);
+       var acc = Number(document.getElementById("명중률").value);
+
+       //General Formula(acc/avd)
+       // if( jobcode == "Warrior" || jobcode == "Magician"){
+       //   acc = dex * 0.8 + luk * 0.5;
+       //   avd = dex * 0.25 + luk * 0.5;
+       // }else if( jobcode == "Pirate"){
+       //   var pir = document.getElementById("C_Pirate").value;
+       //   if( pir = "P2"){
+       //     acc = dex * 0.9 + luk * 0.3;
+       //     avd = dex * 1.5 + luk * 0.5;
+       //   }else if( pir = "P1"){
+       //     acc = dex * 0.6 + luk * 0.3;
+       //     avd = dex * 0.125 + luk * 0.5;
+       //   }
+       // }else{
+       //   acc = dex * 0.6 + luk * 0.3;
+       //   avd = dex * 0.25 + luk * 0.5;
+       // }
+
+       //call mob db
+       var status = mob_reader(mobcode,acc,avd);
+
+       if(status){
+         alert("새로운 계산을 원하실 경우 새로고침을 누루신 후에 이용해주세요!");
+       }else{
+         alert("몬스터 정보 로드 중에 문제가 발생했어요!");
+       }
+
+     }
+     // Calculator -end
+
+     function mob_reader(val,chr_acc,chr_avd){
+       var lv = Number(document.getElementById("level").value);
+
+       if( val == "레이스"){
+         mob_lv = 48;
+         mob_acc = 130;
+         mob_avd = 20;
+       }else if( val == "망둥이"){
+         mob_lv = 85;
+         mob_acc = 160;
+         mob_avd = 29;
+       }else if( val == "망둥이집"){
+         mob_lv = 90;
+         mob_acc = 196;
+         mob_avd = 35;
+       }else if( val == ""){
+         alert("몬스터를 선택해주세요!");
+       }
+
+      //require - cal
+      if( lv <= mob_lv ){
+        diff1 = mob_lv - lv;
+        diff2 = 0;
+      }else if( lv >= mob_lv ){
+        diff1 = 0;
+        diff2 = lv - mob_lv;
+      }
+
+      req_chr_acc = (55 + diff1 * 2) * mob_avd/15;
+      req_mob_acc = 0;
+
+      opp_acc = ( chr_acc * 2 - req_chr_acc)/req_chr_acc * 100;
+      opp_avd = "미구현";
+
+      //print
+      if( opp_acc < 0 ){
+        opp_acc = 0;
+      }else if( opp_acc > 100 ){
+        opp_acc = 100;
+      }
+
+      document.getElementById("acc_opp").value = Math.round(opp_acc) + "%";
+      document.getElementById("avd_opp").value = Math.round(opp_avd) + "%";
+
+      return mob_lv;
+     }
+     // mob_reader -end
+
+     function Get_Mob_DB(val){
+       var el = document.getElementById("Mob_img");
+       el.style.display = "none";
+       if( val == "레이스"){
+         el.innerHTML = "<img src = \"https://t1.daumcdn.net/cfile/tistory/99C61A415A39FCAD02\">";
+       }else if( val == "망둥이"){
+         el.innerHTML = "<img src = \"https://t1.daumcdn.net/cfile/tistory/99AFA5425A3A022B04\">";
+       }else if( val == "망둥이집"){
+         el.innerHTML = "<img src = \"https://t1.daumcdn.net/cfile/tistory/996AB74A5A3A022E16\">";
+       }
+       el.style.display = "inline";
+     }
+     //Get_Mob_DB -end
+
+     function save(){
+       var str = Number(document.getElementById("STR").value);
+       var dex = Number(document.getElementById("DEX").value);
+       var int = Number(document.getElementById("INT").value);
+       var luk = Number(document.getElementById("LUK").value);
+
+       var at1 = Number(document.getElementById("AT1").value);
+       var at2 = Number(document.getElementById("AT2").value);
+
+       var eat12 = Number(document.getElementById("EAT12").value);
+       var eat13 = Number(document.getElementById("EAT13").value);
+       var eat14 = Number(document.getElementById("EAT14").value);
+       var eat15 = Number(document.getElementById("EAT15").value);
+
+       var eat22 = Number(document.getElementById("EAT22").value);
+       var eat23 = Number(document.getElementById("EAT23").value);
+       var eat24 = Number(document.getElementById("EAT24").value);
+       var eat25 = Number(document.getElementById("EAT25").value);
+
+       var eat32 = Number(document.getElementById("EAT32").value);
+       var eat33 = Number(document.getElementById("EAT33").value);
+       var eat34 = Number(document.getElementById("EAT34").value);
+       var eat35 = Number(document.getElementById("EAT35").value);
+
+       var eat42 = Number(document.getElementById("EAT42").value);
+       var eat43 = Number(document.getElementById("EAT43").value);
+       var eat44 = Number(document.getElementById("EAT44").value);
+
+       var eat52 = Number(document.getElementById("EAT52").value);
+       var eat53 = Number(document.getElementById("EAT53").value);
+
+       var eat62 = Number(document.getElementById("EAT62").value);
+
+       var code = document.getElementById("Code").value;
+
+       var data = str + "," + eat12 + "," + eat13 + "," + eat14 + "," + eat15 +"/";
+           data += dex + "," + eat22 + "," + eat23 + "," + eat24 + "," + eat25 + "/";
+           data += int + "," + eat32 + "," + eat33 + "," + eat34 + "," + eat35 + "/";
+           data += luk + "," + eat42 + "," + eat43 + "," + eat44 + "/";
+           data += at1 + "," + eat52 + "," + eat53 + "/";
+           data += at2 + "," + eat62 + "/";
+           data += code + "/";
+
+
+       exportName = "MapleStoryInputData"
+
+       var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(data);
+       var downloadAnchorNode = document.createElement('a');
+       downloadAnchorNode.setAttribute("href", dataStr);
+       downloadAnchorNode.setAttribute("download", exportName + ".sasibu");
+       downloadAnchorNode.click();
+       downloadAnchorNode.remove();
+     }
+     // save -end
+
+     function load(){
+       var input = document.createElement("input");
+       input.type = "file";
+       input.accept = ".sasibu";
+       input.click();
+
+       input.onchange = function (event) {
+         var reader = new FileReader();
+         reader.readAsText(event.target.files[0],"euc-kr");
+
+         reader.onload=function(){
+           var data = String(reader.result);
+           var data0 = data.split("/");
+
+           var data1 = data0[0];
+           var data2 = data0[1];
+           var data3 = data0[2];
+           var data4 = data0[3];
+           var data5 = data0[4];
+           var data6 = data0[5];
+
+           var dat1 = data1.split(",");
+           var dat2 = data2.split(",");
+           var dat3 = data3.split(",");
+           var dat4 = data4.split(",");
+           var dat5 = data5.split(",");
+           var dat6 = data6.split(",");
+           var dat7 = data0[6];
+
+           document.getElementById("STR").value = dat1[0];
+           document.getElementById("DEX").value = dat2[0];
+           document.getElementById("INT").value = dat3[0];
+           document.getElementById("LUK").value = dat4[0];
+             if( dat1[0] >0 ){
+               document.getElementById("STR").disabled = false;
+             }
+             if( dat2[0] >0 ){
+               document.getElementById("DEX").disabled = false;
+             }
+             if( dat3[0] >0 ){
+               document.getElementById("INT").disabled = false;
+             }
+             if( dat4[0] >0 ){
+               document.getElementById("LUK").disabled = false;
+             }
+           document.getElementById("AT1").value = dat5[0];
+           document.getElementById("AT2").value = dat6[0];
+
+           document.getElementById("EAT12").value = dat1[1];
+           document.getElementById("EAT13").value = dat1[2];
+           document.getElementById("EAT14").value = dat1[3];
+           document.getElementById("EAT15").value = dat1[4];
+
+           document.getElementById("EAT22").value = dat2[1];
+           document.getElementById("EAT23").value = dat2[2];
+           document.getElementById("EAT24").value = dat2[3];
+           document.getElementById("EAT25").value = dat2[4];
+
+           document.getElementById("EAT32").value = dat3[1];
+           document.getElementById("EAT33").value = dat3[2];
+           document.getElementById("EAT34").value = dat3[3];
+           document.getElementById("EAT35").value = dat3[4];
+
+           document.getElementById("EAT42").value = dat4[1];
+           document.getElementById("EAT43").value = dat4[2];
+           document.getElementById("EAT44").value = dat4[3];
+
+           document.getElementById("EAT52").value = dat5[1];
+           document.getElementById("EAT53").value = dat5[2];
+
+           document.getElementById("EAT62").value = dat6[1];
+
+           document.getElementById("Code").value = dat7;
+
+           confirm("입력값을 불러왔습니다! 마법사의 경우 스킬 선택 후 계산해주세요!");
+         };
+ 	    };
+    }
+     // load -end
+
+   </script>
+   <body id='cover' class="text-center">
+     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <header>
+            <div class="inner">
+              <h1 class="masthead-brand">Maple Accuracy/Avoidance Calculator</h1>
+            </div>
+          <!-- <img style=' margin-top:5%; margin-left:20%; margin-right:20%; height:50%; width:50%;' src="https://www.mentor.com/company/news/f1-limitation-on-use-of-cfd-software-could-benefit-more/mainColumnParagraphs/0/column1ColumnParagraphs/0/content_files/file0/Voxdale1_smaller_420.jpg" > -->
+      </header>
+
+      <!-- Main -->
+      <main role="main" class="innercover">
+          <!-- Job Input Table -->
+          <table style="margin:auto; margin-bottom:2%; width:40%;">
+            <thead style="font-size:1.5em;">
+              <td>직업</td>
+              <td>직업 계열</td>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div>
+                      <div style="display:inline-block">
+                        <select Id="Job" onChange="job_reader(this.value)">
+                          <option value="">-</option>
+                          <option value="Warrior">전사</option>
+                          <option value="Magician">마법사</option>
+                          <option value="Thief">도적</option>
+                          <option value="Bowman">궁수</option>
+                          <option value="Pirate">해적</option>
+                        </select>
+                      </div>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                      <div style="display:inline-block">
+                        <select Id="C_Warrior" style="display:none" onChange="jobClass_reader(this.value)">
+                          <option value="">-</option>
+                          <option value="W1">히어로</option>
+                          <option value="W2">다크나이트</option>
+                          <option value="W3">팔라딘</option>
+                        </select>
+                        <select Id="C_Magician" style="display:none" onChange="jobClass_reader(this.value)">
+                          <option value="">-</option>
+                          <option value="M1">비숍</option>
+                          <option value="M2">아크메이지(썬콜)</option>
+                          <option value="M3">아크메이지(불독)</option>
+                        </select>
+                        <select Id="C_Thief" style="display:none" onChange="jobClass_reader(this.value)">
+                          <option value="">-</option>
+                          <option value="T1">나이트로드</option>
+                          <option value="T2">섀도어</option>
+                        </select>
+                        <select Id="C_Bowman" style="display:none" onChange="jobClass_reader(this.value)">
+                          <option value="">-</option>
+                          <option value="B1">보우마스터</option>
+                          <option value="B2">신궁</option>
+                        </select>
+                        <select Id="C_Pirate" style="display:none" onChange="jobClass_reader(this.value)">
+                          <option value="">-</option>
+                          <option value="P1">캡틴</option>
+                          <option value="P2">바이퍼</option>
+                        </select>
+                      </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+
+          <!-- Stat Input Table -->
+          <table id="StatInputTable" style="margin:auto; ">
+            <thead>
+              <tr>
+                <th colspan="2">능력치</th>
+                <th>몬스터 선택</th>
+                <th>
+                  <select Id="Mob" onChange="Get_Mob_DB(this.value)">
+                    <option value="">-</option>
+                    <option value="레이스">레이스</option>
+                    <option value="망둥이">망둥이</option>
+                    <option value="망둥이집">망둥이집</option>
+                  </select>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>캐릭터 레벨</td>
+                <td>
+                  <input type="textbox" Id="level" maxlength="5" disabled="true">
+                </td>
+                <td colspan="2" rowspan="3">
+                  <div Id="Mob_img">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>회피율</td>
+                <td>
+                  <input type="textbox" Id="회피율" maxlength="5" disabled="true">
+                </td>
+              </tr>
+              <tr>
+                <td>명중률</td>
+                <td>
+                  <input type="textbox" Id="명중률" maxlength="5" disabled="true">
+                </td>
+              </tr>
+              <tr>
+                <td colspan="4"></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table style="margin:auto; margin-top:2%;">
+            <thead>
+              <tr>
+                <td>명중 확률</td>
+                <td>피격될 확률</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <input type="textbox" Id="acc_opp" value="" disabled>
+                </td>
+                <td>
+                  <input type="textbox" Id="avd_opp" value="" disabled>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Submit -->
+          <div style="margin-top: 2%; margin-bottom: 1%">
+            <button onclick="cal()">선택 완료!</button>
+          </div>
+
+      </main>
+      <!-- Main Tag == end -->
+
+      <footer>
+        <p>&copy; made by Sasibu</p>
+      </footer>
+
+    </div>
+   </body>
+ </html>

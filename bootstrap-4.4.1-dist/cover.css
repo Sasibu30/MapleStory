@@ -2,13 +2,6 @@
  * Globals
  */
 
-/* Links */
-a,
-a:focus,
-a:hover {
-  color: #fff;
-}
-
 /* Custom default button */
 #cover .innercover label,
 #cover .filebox label{
@@ -54,6 +47,30 @@ a:hover {
 
 #StatInputTable td{
   padding: 0.5rem;
+}
+
+#description a:link{
+  color: blue;
+}
+
+ol{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #f1f1f1;
+}
+a:link{
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+a:visited{
+    color:black;
+}
+a:hover{
+    background-color: #555;
+    color: white;
 }
 
 /*
