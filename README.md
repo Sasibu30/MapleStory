@@ -24,7 +24,7 @@
        다른 캐릭터의 정보를 입력하여 계산하고 싶은 경우에는 새로고침을 해주시기 바랍니다.
 
 # 홈페이지 주소
-https://sasibu30.github.io/MapleStory/Hom
+https://sasibu30.github.io/MapleStory/Home
 
 # 스공 계산기 이용 주소
 아래의 주소로 접속이 가능합니다.
