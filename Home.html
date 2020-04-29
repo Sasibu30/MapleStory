@@ -25,22 +25,17 @@
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
    <script type="text/javascript">
 
+   function ini(){
+     document.getElementById("job").style.display = "none";
+     document.getElementById("mob").style.display = "none";
+     document.getElementById("pos").style.display = "none";
+   }
+
     function list_t(val){
+      ini();
       var ele = document.getElementById(val);
-      if( val == "job"){
+      if( val != ""){
         if( ele.style.display == "" ){
-          ele.style.display="none";
-        }else{
-          ele.style.display="";
-        }
-      }else if( val == "mob"){
-        if( ele.style.display == ""){
-          ele.style.display="none";
-        }else{
-          ele.style.display="";
-        }
-      }else if( val == "pos"){
-        if( ele.style.display == ""){
           ele.style.display="none";
         }else{
           ele.style.display="";
@@ -73,7 +68,7 @@
         <br>
         <p>현재 지속적으로 업데이트 중!</p>
         <br>
-        <div class="container" Id="description" style="border-top:1px solid white; border-bottom:1px solid white; padding:1%;">
+        <div class="container" id="description" style="border-top:1px solid white; border-bottom:1px solid white; padding:1%;">
             <div Id="job" style="display:none;">
               <br>
               <h4>직업별 핵심 능력치</h4>
@@ -104,14 +99,14 @@
                   <p> 캐릭터의 스공 및 마법사의 스킬 데미지 계산을 원하는 경우에는 아래의 링크를 창고해주세요.</p>
                   <a href="./Maple" style="font:blue;"> 캐릭터 스공/데미지 계산기 </a>
                 </div>
-              <br>
-              <h4>직업별 스킬 마스터 순위</h4>
-              <br>
-              <p style="width:70%; margin:auto; text-align:left;">
-                개인적으로 생각하는 스킬 마스터 우선 순위에 대해서 기술하였습니다.
-                이는 추천일 뿐 무조건 이런 식으로 캐릭터를 육성하라는 의미는 아닙니다.
-                혹시나 스킬을 이상하게 찍어도 레벨이 높아짐에 따라 스킬 포인트가 남기 때문에 캐릭터 육성에는 큰 문제가 없습니다.
-              </p>
+                <br>
+                <h4>직업별 스킬 트리</h4>
+                <br>
+                <p style="width:70%; margin:auto; text-align:left;">
+                  개인적으로 생각하는 스킬 마스터 우선 순위에 대해서 기술하였습니다.
+                  이는 추천일 뿐 무조건 이런 식으로 캐릭터를 육성하라는 의미는 아닙니다.
+                  혹시나 스킬을 이상하게 찍어도 레벨이 높아짐에 따라 스킬 포인트가 남기 때문에 캐릭터 육성에는 큰 문제가 없습니다.
+                </p>
                 <h5>전사</h5>
                   <div style="width:70%; margin:auto; text-align:left;">
                     <p>공통(1차스킬)</p>
@@ -243,7 +238,7 @@
                     <br>
                     <p>3차 전직</p>
                     <p>버커니어</p>
-                    <p>'에너지차지'1 → '에너지버스터' M → '에너지드레인' 1 → '스턴 마스터리' M → '에너지차지' M → '트랜스폼' 1 → 쇼크웨이브 21 → 트랜스폼 M</p>
+                    <p>'에너지차지'1 → '에너지버스터' M  → '스턴 마스터리' M → '에너지차지' M  → 쇼크웨이브 M → 자유 분배</p>
                     <p>발키리</p>
                     <p>'쿨링이펙트' 1 → '트리플파이어' 20 → '쿨링이펙트' M → '옥토퍼스' M → '가비오타' 15 → '파이어버너' 26 → '호밍' M</p>
                     <br>
@@ -251,9 +246,17 @@
                     <p>바이퍼</p>
                     <p>'드래곤 스트라이크' 30 → '쇼크웨이브' 30 → '에너지 오브' 30 → '윈드 부스터' 11 → '메이플 용사' 30 → '타임리프' 30 → 자유 분배</p>
                     <p>캡틴</p>
-                    <p>'배틀쉽' 1 → '배틀쉽 캐논' M → '어드밴스드 호밍' M → '배틀쉽 토르페도' M → '메이플 용사' 30 → 자유 분배</p>
+                    <p>'배틀쉽' 1 → '배틀쉽 캐논' 30 → '배틀쉽 토르페도' 30 → '어드밴스드 호밍' 30 → '메이플 용사' 30 → 자유 분배</p>
                     <br>
                   </div>
+                  <br>
+                  <h4>직업별 스킬북 퀘스트</h4>
+                  <br>
+                  <p style="width:70%; margin:auto; text-align:left;">
+                    직업별로 퀘스트를 깨야 얻을 수 있는 스킬에 대한 정보를 정리하였습니다.
+                  </p>
+                  <a href="./skill_quest" style="font:blue;"> 스킬 퀘스트 정보 사이트 </a>
+
             </div>
 
             <div Id="mob" style="display:none;">

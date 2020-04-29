@@ -1,0 +1,225 @@
+ <!DOCTYPE html>
+ <html>
+   <head>
+     <meta charset="utf-8">
+     <title>Sasibu's Maplestory Page</title>
+
+     <!-- Bootstrap core CSS -->
+     <link rel="stylesheet" href="./bootstrap-4.4.1-dist/css/bootstrap.min.css">
+
+     <!-- Custome styles for this template -->
+     <link rel="stylesheet" href="./bootstrap-4.4.1-dist/css/bootstrap.css">
+     <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/cover/">
+
+    <meta name="msapplication-config" content="/docs/4.4/assets/img/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#563d7c">
+
+    <!-- Custom styles for this template -->
+    <link href="./bootstrap-4.4.1-dist/cover.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+   </head>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <script type="text/javascript">
+
+   function ini(){
+     document.getElementById("job").style.display = "none";
+     document.getElementById("war").style.display = "none";
+     document.getElementById("mag").style.display = "none";
+     document.getElementById("thi").style.display = "none";
+     document.getElementById("bow").style.display = "none";
+     document.getElementById("pir").style.display = "none";
+   }
+
+    function list_t(val){
+      ini();
+      var ele = document.getElementById(val);
+      if( val != ""){
+        if( ele.style.display == "" ){
+          ele.style.display="none";
+        }else{
+          ele.style.display="";
+        }
+      }
+    }
+
+   </script>
+
+   <body id='cover' class="text-center">
+     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <header>
+            <div class="inner">
+              <h1 class="masthead-brand">MapleStory Skill Quest Searching</h1>
+            </div>
+          <!-- <img style=' margin-top:5%; margin-left:20%; margin-right:20%; height:50%; width:50%;' src="https://www.mentor.com/company/news/f1-limitation-on-use-of-cfd-software-could-benefit-more/mainColumnParagraphs/0/column1ColumnParagraphs/0/content_files/file0/Voxdale1_smaller_420.jpg" > -->
+      </header>
+
+      <!-- nav -->
+      <nav style="width:200px; margin-left:20px; margin-top:100px">
+        <ol>
+          <li> <a href="javascript:list_t('job')">직업 공통</a> </li>
+          <li> <a href="javascript:list_t('war')">전사</a> </li>
+          <li> <a href="javascript:list_t('mag')">마법사</a></li>
+          <li> <a href="javascript:list_t('thi')">도적</a></li>
+          <li> <a href="javascript:list_t('bow')">궁수</a></li>
+          <li> <a href="javascript:list_t('pir')">해적</a></li>
+        </ol>
+      </nav>
+
+      <!-- Main -->
+      <main role="main" style="margin-left: 200px; margin-top:-300px;">
+        <br>
+        <p>현재 지속적으로 업데이트 중!</p>
+        <br>
+        <div class="container" id="description" style="border-top:1px solid white; border-bottom:1px solid white; padding:1%;">
+            <div Id="job">
+              <h5>1. 장인의 혼</h5>
+              <br>
+              <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fk.kakaocdn.net%2Fdn%2FKUSuK%2FbtqBW0qN0wj%2FoYdhW7GEv1miczMZbceKiK%2Fimg.jpg">
+              <br>
+              <p>떠돌인 연금술사(슬리피우드, 마가티아, 엘나스, 루디브리엄, 리프레에 위치)에게 가서 '떠돌이 연금술사의 새로운 기술' 퀘스트를 완료하면 획득</p>
+              <br>
+              <h5>2. 메이커</h5>
+              <br>
+              <p>'장비 분해' 혹은 '정령의 밥' 등 여러 컨텐츠를 이용하실 때 필요한 스킬로 3레벨까지 배워놓으시는 것을 추천드립니다.</p>
+              <p>아래의 링크 참고 ('블러드'님의 포스팅 내용)</p>
+              <a href="https://blog.naver.com/azsa0404/221921634498" target="_blank">메이커 레벨1 (1편)</a>
+              <a href="https://blog.naver.com/azsa0404/221921645241" target="_blank">메이커 레벨1 (2편)</a>
+              <a href="https://blog.naver.com/azsa0404/221921675575" target="_blank">메이커 레벨2 </a>
+              <a href="https://blog.naver.com/azsa0404/221923616684" target="_blank">메이커 레벨3 </a>
+              <br>
+              <h5>3. 메이플 용사</h5>
+              <br>
+              <p>4차 전직시 받는 <<스킬북> 메이플 용사>를 소비하여 스킬 획득</p>
+              <br>
+              <h5>4. 용사의 의지</h5>
+              <br>
+              <p>아래의 링크 참고 ('블러드'님의 포스팅 내용)</p>
+              <a href="https://blog.naver.com/azsa0404/221918473989" target="_blank">용사의 의지 퀘스트 (1편)</a>
+              <a href="https://blog.naver.com/azsa0404/221918554756" target="_blank">용사의 의지 퀘스트 (2편)</a>
+            </div>
+
+            <div Id="war" style="display:none;">
+              <h5>1. 전사 공통</h5>
+              <br>
+              <a href="https://maplekibun.tistory.com/484" target="_blank">스탠스</a>
+              <br>
+              <a href="https://maplekibun.tistory.com/483?category=796535" target="_blank">돌진</a>
+              <br>
+              <h5>2. 히어로</h5>
+              <br>
+              <a href="https://maplekibun.tistory.com/475?category=796535" target="_blank">인레이지</a>
+              <br>
+              <a href="https://maplekibun.tistory.com/478?category=796535" target="_blank">블로킹</a>
+              <br>
+              <h5>3. 다크나이트</h5>
+              <br>
+              <a href="https://maplekibun.tistory.com/476?category=796535" target="_blank">버서크</a>
+              <br>
+              <a href="https://maplekibun.tistory.com/480?category=796535" target="_blank">비홀더스 버프</a>
+              <br>
+              <a href="https://maplekibun.tistory.com/481?category=796535" target="_blank">비홀더스 힐링</a>
+              <br>
+              <h5>4. 팔라딘</h5>
+              <br>
+              <a href="https://maplekibun.tistory.com/477?category=796535" target="_blank">생츄어리</a>
+              <br>
+              <a href="https://maplekibun.tistory.com/479?category=796535" target="_blank">블로킹</a>
+              <br>
+              <a href="https://maplekibun.tistory.com/482?category=796535" target="_blank">홀리 차지/디바인 차지</a>
+            </div>
+
+            <div Id="mag" style="display:none;">
+              <h5>1. 마법사 공통</h5>
+              <br>
+              <a href="https://maplekibun.tistory.com/466?category=796535" target="_blank">제네시스/블리자드/메테오 (선행퀘스트)</a>
+              <p>후에 이어지는 제네시스/블리자드/메테오 그리고 리저렉션 퀘스트를 수행할 때, '캐시샵>상점모음>퀘스트 상점' 경로에서 필요한 아이템을 얻을 수 있습니다.</p>
+              <a href="https://maplekibun.tistory.com/484" target="_blank">인피니티</a>
+              <p>(전사 스탠스 퀘스트 중 타일러스 호위 임무에서 나오는 몹 잡아서 스킬북 획득)</p>
+              <br>
+              <h5>2. 비숍</h5>
+              <br>
+              <a href="https://maplekibun.tistory.com/467?category=796535" target="_blank">제네시스</a>
+              <a href="https://maplekibun.tistory.com/474?category=796535" target="_blank">바하뮤트</a>
+              <a href="https://maplekibun.tistory.com/507?category=796535" target="_blank">리저렉션</a>
+              <br>
+              <h5>3. 아크메이지(썬,콜)</h5>
+              <br>
+              <a href="https://maplekibun.tistory.com/469?category=796535" target="_blank">블리자드</a>
+              <a href="https://maplekibun.tistory.com/473?category=796535" target="_blank">아이스데몬</a>
+              <a href="https://maplekibun.tistory.com/470?category=796535" target="_blank">엘퀴네스</a>
+              <br>
+              <h5>3. 아크메이지(불,독)</h5>
+              <br>
+              <a href="https://maplekibun.tistory.com/468?category=796535" target="_blank">메테오</a>
+              <a href="https://maplekibun.tistory.com/472?category=796535" target="_blank">파이어데몬</a>
+              <a href="https://maplekibun.tistory.com/471?category=796535" target="_blank">이프리트</a>
+
+            </div>
+
+            <div Id="thi" style="display:none;">
+              <h5>1. 도적 공통</h5>
+              <br>
+              <a href="https://maplekibun.tistory.com/484" target="_blank">쇼다운</a>
+              <p>(전사 스탠스 퀘스트 중 타일러스 호위 임무에서 나오는 몹 잡아서 스킬북 획득)</p>
+              <a href="https://maplekibun.tistory.com/488?category=796535" target="_blank">닌자앰부쉬</a>
+              <br>
+              <h5>2. 섀도어</h5>
+              <br>
+              <a href="https://maplekibun.tistory.com/487?category=796535" target="_blank">연막탄</a>
+              <a href="https://maplekibun.tistory.com/486?category=796535" target="_blank">암살</a>
+              <br>
+              <h5>3. 나이트로드</h5>
+              <br>
+              <a href="https://maplekibun.tistory.com/485?category=796535" target="_blank">닌자스톰</a>
+            </div>
+
+            <div Id="bow" style="display:none;">
+              <h5><del>1. 궁수 공통</del></h5>
+              <br>
+              <h5>2. 신궁</h5>
+              <br>
+              <a href="#"><del>스나이핑</del></a>
+              <a href="https://maplekibun.tistory.com/492?category=796535" target="_blank">피어싱</a>
+              <a href="https://maplekibun.tistory.com/494?category=796535" target="_blank">프리져</a>
+              <br>
+              <h5>3. 보우마스터</h5>
+              <br>
+              <a href="https://maplekibun.tistory.com/491?category=796535" target="_blank">폭풍의 시</a>
+              <a href="https://maplekibun.tistory.com/489?category=796535" target="_blank">집중</a>
+              <a href="https://maplekibun.tistory.com/493?category=796535" target="_blank">피닉스</a>
+            </div>
+
+            <div Id="pir" style="display:none;">
+              <h5><del>1. 해적 공통</del></h5>
+              <br>
+              <h5>2. 바이퍼</h5>
+              <br>
+              <a href="https://maplekibun.tistory.com/495?category=796535">타임리프</a>
+              <a href="https://maplekibun.tistory.com/498?category=796535">데몰리션</a>
+              <a href="https://maplekibun.tistory.com/497?category=796535">스내치</a>
+              <a href="https://maplekibun.tistory.com/496?category=796535">슈퍼 트랜스폼</a>
+              <br>
+              <h5>3. 캡틴</h5>
+              <br>
+              <a href="https://maplekibun.tistory.com/501?category=796535">배틀쉽</a>
+              <a href="https://maplekibun.tistory.com/502?category=796535">배틀쉽 캐논</a>
+              <a href="https://maplekibun.tistory.com/503?category=796535">배틀쉽 토르페도</a>
+              <a href="https://maplekibun.tistory.com/500?category=796535">에어 스트라이크</a>
+              <a href="https://maplekibun.tistory.com/499?category=796535">마인드 컨트롤</a>
+              <br>
+            </div>
+        </div>
+      </main>
+      <!-- Main Tag == end -->
+
+      <footer style="margin-left: 200px; margin-bottom:20px;">
+        <p>&copy; made by Sasibu</p>
+      </footer>
+
+    </div>
+   </body>
+ </html>
