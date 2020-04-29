@@ -29,4 +29,4 @@ https://sasibu30.github.io/MapleStory/Home
 # 스공 계산기 이용 주소
 아래의 주소로 접속이 가능합니다.
 
- https://sasibu30.github.io/MapleStory/Maple
+ https://sasibu30.github.io/MapleStory/stat_cal
