@@ -50,7 +50,10 @@
 }
 
 #description a:link{
+  display: block;
   color: blue;
+  padding: 8px 16px;
+  text-decoration: none;
 }
 
 ol{
@@ -59,16 +62,16 @@ ol{
     padding: 0;
     background-color: #f1f1f1;
 }
-a:link{
+ol a:link{
     display: block;
     color: #000;
     padding: 8px 16px;
     text-decoration: none;
 }
-a:visited{
+ol a:visited{
     color:black;
 }
-a:hover{
+ol a:hover{
     background-color: #555;
     color: white;
 }
