@@ -25,20 +25,13 @@
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
    <script type="text/javascript">
 
-   function ini(){
-     document.getElementById("job").style.display = "none";
-     document.getElementById("mob").style.display = "none";
-     document.getElementById("pos").style.display = "none";
-   }
-
     function list_t(val){
-      ini();
       var ele = document.getElementById(val);
       if( val != ""){
-        if( ele.style.display == "" ){
-          ele.style.display="none";
-        }else{
+        if( ele.style.display == "none" ){
           ele.style.display="";
+        }else{
+          ele.style.display="none";
         }
       }
     }
@@ -69,7 +62,7 @@
         <p>현재 지속적으로 업데이트 중!</p>
         <br>
         <div class="container" id="description" style="border-top:1px solid white; border-bottom:1px solid white; padding:1%;">
-            <div Id="job" style="display:none;">
+            <div Id="job" style="display:none">
               <br>
               <h4>직업별 핵심 능력치</h4>
               <br>
@@ -97,7 +90,7 @@
                 <div style="width:70%; margin:auto; text-align:left;">
                   <p> 직업별 스공은 주력 스텟과 보조 스텟 그리고 공격력/마력에 의해 결정됩니다.</p>
                   <p> 캐릭터의 스공 및 마법사의 스킬 데미지 계산을 원하는 경우에는 아래의 링크를 창고해주세요.</p>
-                  <a href="./Maple" style="font:blue;"> 캐릭터 스공/데미지 계산기 </a>
+                  <a href="./stat_cal" target="_blank" style="text-align:center"> 캐릭터 스공/데미지 계산기 </a>
                 </div>
                 <br>
                 <h4>직업별 스킬 트리</h4>
@@ -255,7 +248,7 @@
                   <p style="width:70%; margin:auto; text-align:left;">
                     직업별로 퀘스트를 깨야 얻을 수 있는 스킬에 대한 정보를 정리하였습니다.
                   </p>
-                  <a href="./skill_quest" style="font:blue;"> 스킬 퀘스트 정보 사이트 </a>
+                  <a href="./skill_quest" target="_blank"> 스킬 퀘스트 정보 사이트 </a>
 
             </div>
 
