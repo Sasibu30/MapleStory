@@ -53,7 +53,14 @@
   display: block;
   color: blue;
   padding: 8px 16px;
+  width: 40%;
+  margin:auto;
   text-decoration: none;
+}
+
+#description a:hover{
+    background-color: #555;
+    color: white;
 }
 
 ol{
