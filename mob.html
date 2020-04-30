@@ -25,6 +25,13 @@
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
    <script type="text/javascript">
 
+   function list_t(val){
+     if( val != ""){
+       document.getElementById("mob_search").style.display = "none";
+       document.getElementById(val).style.display="";
+     }
+   }
+
    function search(val){
      if( val != ""){
        window.open('about:blank').location.href = "http://maple.inven.co.kr/dataninfo/monster/list.php?datagroup=Misc&sname="+val;
@@ -55,16 +62,19 @@
       <!-- nav -->
       <nav style="width:200px; margin-left:20px; margin-top:100px">
         <ol>
-          <li> <a href="./Home">직업 정보</a> </li>
+          <li> <a href="./job">직업 정보</a> </li>
           <li> <a href="./mob">몬스터 정보</a> </li>
+          <ul Id="submenu" style="background:gray;">
+            <li> <a href="javascript:list_t('mob_search')">몬스터 검색</a> </li>
+          </ul>
           <li> <a href="./tip">뉴비 팁 모음</a></li>
         </ol>
       </nav>
 
       <!-- Main -->
-      <main role="main" style="margin-left: 200px; margin-top:-110px;">
+      <main role="main" style="margin-left: 200px; margin-top:-150px;">
         <div class="container" id="description" style="border-top:1px solid white; border-bottom:1px solid white; padding:1%;">
-            <div Id="search">
+            <div Id="mob_search">
               <p style="text-align:left;">현재 메이플스토리(본섭) 정보를 제공하는 인벤과 연동하므로 원하시는 정보와는 다른 정보가 제공할 수 있습니다.</p>
               <p style="text-align:left;">(빅뱅 전의) 메이플스토리에 대한 정확한 정보는 맨 아래의 검색어 창에 영어로 입력해주세요! (단, 영어로 적혀있으니 번역기 활용 필요)</p>
               <h5>몬스터 이름 입력</h5>
@@ -79,6 +89,7 @@
                 <button type="button" onclick="search_en(document.getElementById('input_mob_en').value)" >Search</button>
               </form>
             </div>
+            <br>
         </div>
       </main>
       <!-- Main Tag == end -->
