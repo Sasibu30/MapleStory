@@ -28,8 +28,10 @@
     function list_t(val){
       if( val != ""){
         document.getElementById("ap").style.display = "none";
+        document.getElementById("info").style.display = "none";
         document.getElementById("skill").style.display = "none";
         document.getElementById("skill_quest").style.display = "none";
+        document.getElementById("skill_imp").style.display = "none";
         document.getElementById(val).style.display="";
       }
     }
@@ -51,8 +53,10 @@
           <li> <a href="./job">직업 정보</a> </li>
           <ul Id="submenu" style="background:gray;">
             <li> <a href="javascript:list_t('ap')">능력치 정보</a> </li>
+            <li> <a href="javascript:list_t('info')">전직 정보</a> </li>
             <li> <a href="javascript:list_t('skill')">스킬 정보</a> </li>
             <li> <a href="javascript:list_t('skill_quest')">스킬 퀘스트</a> </li>
+            <li> <a href="javascript:list_t('skill_imp')">마스터리북 정보</a> </li>
           </ul>
           <li> <a href="./mob">몬스터 정보</a> </li>
           <li> <a href="./tip">뉴비 팁 모음</a></li>
@@ -60,9 +64,10 @@
       </nav>
 
       <!-- Main -->
-      <main role="main" style="margin-left: 200px; margin-top:-230px;">
+      <main role="main" style="margin-left: 200px; margin-top:-310px;">
         <div class="container" id="description" style="border-top:1px solid white; border-bottom:1px solid white; padding:1%;">
           <div Id="ap">
+            <br>
             <h4>직업별 핵심 능력치</h4>
             <br>
             <table style="margin:auto">
@@ -97,6 +102,61 @@
             </div>
             <br>
           </div>
+          <div Id="info" style="display:none">
+            <p>모험가는 아래의 글을 읽어보시면 됩니다.</p>
+            <p style="width:80%; margin:auto; text-align:left;">
+              시그너스 기사단은 정복자 시스템이 없어 250만렙 이후에 스펙업이 힘들어 본캐로 키우기에는 부적절합니다.
+              보통 '정령의 축복' 스킬을 얻기 위해 키우므로 뉴비에게는 추천드리지 않는 직업입니다.
+              전직 방법은 아래의 글에서 '1차 전직' 부분을 참고해주시기 바랍니다.
+              이후의 전직 방법은 아래의 링크를 참고하여 주시기 바랍니다.
+              <a href="http://www.inven.co.kr/webzine/news/?site=maple&news=93459#03" style="text-align:center">'메이플 인벤(시그너스)'</a>
+            </p>
+            <br>
+            <h5>-1차 전직-</h5>
+            <div style="width:80%; margin:auto; text-align:left;">
+              <p>전사 : lv.10을 달성 후, 페리온에서 <ins>'주먹펴고일어서'</ins>에게 말을 걸어 전직 </p>
+              <p>도적 : lv.10을 달성 후, 커닝시티 <ins>'다크로드'</ins>에게 말을 걸어 전직</p>
+              <p>마법사 : lv.8을 달성 후, 엘리니아 <ins>'하인즈'</ins>에게 말을 걸어 전직</p>
+              <p>궁수 : lv.10을 달성 후, 헤네시스 <ins>'헬레나'</ins>에게 말을 걸어 전직</p>
+              <p>해적 : lv.10을 달성 후, 노틸러스 <ins>'카이린'</ins>에게 말을 걸어 전직</p>
+              <p>시그너스 : lv.10이상 서버쉼터로 이동 후 맨 오른쪽 포탈에서 전직 가능</p>
+            </div>
+            <br>
+            <h5>-2차 전직-</h5>
+            <div style="width:80%; margin:auto; text-align:left;">
+              <p>lv.30을 달성한 후, 직업별 마을의 전 NPC와 대화를 한 후에 아래의 맵에 위치하는 전직교관에게 말을 걸어 퀘스트 수행</p>
+              <p>전사 - 페리온 서쪽 바위산4</p>
+              <p>도적 - 커닝시티 북쪽 공사장</p>
+              <p>마법사 - 엘리니아 북쪽 숲</p>
+              <p>궁수 - 헤네시스 던전으로 가는 길</p>
+              <p>해적 - '카이린'에게 말을 걸어 입장</p>
+            </div>
+            <br>
+            <h5>-3차 전직-</h5>
+            <div style="width:80%; margin:auto; text-align:left;">
+              <p>
+                lv.70을 달성한 후, 엘나스 장로의 관저로 가셔서 직업별 NPC와 대화하여 3차 전직 퀘스트를 받으시고,
+                마을별 전직 NPC에게 간 후에 아래의 직업별 위치가 다른 '차원의 문'을 통해 첫번째 퀘스트를 수행하시면 됩니다.
+              </p>
+              <p>전사 - 개미굴 광장</p>
+              <p>도적 - 원숭이의 늪2</p>
+              <p>마법사 - 사악한 기운의 숲</p>
+              <p>궁수 - 슬리피 던전5</p>
+              <p>해적 - 던전:이불아이의 굴</p>
+              <br>
+              <p>
+                그 후 엘나스 장로의 관저의 NPC와 대화를 하면 '어둠의 크리스탈'을 가지고 엘나스: 날카로운 절벽2의 꼭대기에 위치한 문을 통해 히든 맵을 입장하여 문제를 풀어라고 합니다.
+                그 문제에 대한 족보는 아래의 링크를 참고하시면 됩니다. 'Ctrl+F'를 활용하여 찾으시구 찾으시는 문제가 없을 경우 '옛날 메이플 3차 전직 문제'라는 글로 구글링을 하시면 됩니다.
+              </p>
+              <a href="http://blog.naver.com/PostView.nhn?blogId=wgdkfhs&logNo=220858569198&parentCategoryNo=&categoryNo=&viewDate=&isShowPopularPosts=false&from=postView" style="text-align:center;">3차 전직 문제 족보</a>
+            </div>
+            <br>
+            <h5>-4차 전직-</h5>
+            <div style="width:80%; margin:auto; text-align:left;">
+              <p>lv.120을 달성한 후, 엘나스 장로의 관저의 NPC와 대화를 한 후, 리프레 산양의 숲 꼭대기에 위치한 히든 포탈을 타고 사제의 숲에 입장하여 전직 NPC와 대화를 하여 전직 퀘스트 시작 </p>
+              <p>'영웅의 펜던트'와 '영웅의 별'은 '마뇽'과 '그리프'를 잡아서 얻을 수 있으나, 각 아이템을 500만 메소에 '캐시샵 > 상점 모음 > 퀘스트 상점'에서 구매가 가능합니다.</p>
+            </div>
+          </div>
           <div Id="skill" style="display:none">
               <br>
               <h4>직업별 스킬 트리</h4>
@@ -106,7 +166,8 @@
                 이는 추천일 뿐 무조건 이런 식으로 캐릭터를 육성하라는 의미는 아닙니다.
                 혹시나 스킬을 이상하게 찍어도 레벨이 높아짐에 따라 스킬 포인트가 남기 때문에 캐릭터 육성에는 큰 문제가 없습니다.
               </p>
-              <h5>전사</h5>
+              <br>
+              <h5><전사></h5>
                 <div style="width:70%; margin:auto; text-align:left;">
                   <p>공통(1차스킬)</p>
                   <p>'파워 스트라이크' M → '슬래시 블러스트' M → 'HP 증가량 증가' M → 'HP 회복량 증가' M → '인듀어' or '아이언 바디'</p>
@@ -141,7 +202,8 @@
                   <p>3. 팔라딘</p>
                   <p>돌진 1 → 생츄어리 1 → 스탠스 1  → 생츄어리 30 → 자유 분배</p>
                 </div>
-              <h5>마법사</h5>
+              <br>
+              <h5><마법사></h5>
                 <div style="width:70%; margin:auto; text-align:left;">
                   <p>공통(1차스킬)</p>
                   <p>'에너지 볼트' 1 → '매직 클로' M → 'MP 증가량 향상' M → '매직 가드' M → 'MP 회복력 향상' M → 자유 분배</p>
@@ -173,7 +235,8 @@
                   <p>'제네시스' 1 → '인피니티' 1 → 자유 분배</p>
                   <p>( 우선도 : '제네시스' -> '인피니티' -> '메이플 용사' )</p>
                 </div>
-              <h5>도적</h5>
+              <br>
+              <h5><도적></h5>
                 <div style="width:70%; margin:auto; text-align:left;">
                   <p>공통(1차스킬)</p>
                   <p>럭키세븐1 → 님블바디3 → 킨아이즈8 → 럭키세븐20 → 님블바디20→ 디스오더3 → 다크사이트10</p>
@@ -198,25 +261,26 @@
                   <p>나이트로드</p>
                   <p>'페이크' 1 → '스피릿자벨린' 1 → '트리플 스로우' 1 → '페이크' 10 → '쇼다운' 30 → 메이플용사 30 → 자유 분배</p>
                 </div>
-              <h5>궁수</h5>
+              <br>
+              <h5><궁수></h5>
                 <div style="width:70%; margin:auto; text-align:left;">
                   <p>공통(1차스킬)</p>
                   <p>'에로우 블로우' 1 → '아마존의 축복' M → '아마존의눈' M → '더블샷' 20 → '크리티컬샷' M → '포커스' 9</p>
                   <br>
                   <p>2차 전직</p>
                   <p>헌터</p>
-                  <p>'에로우 봄' 1 → '보우 마스터리' M → '에로우 봄' M → '보우 부스터' M → '파워 넉백' 20 → '포커스' 20 → 자유 분배</p>
+                  <p>'에로우 봄' 1 → '보우 마스터리' M → '에로우 봄' M → '보우 부스터' M → '포커스' 20 → '파워 넉백' 11 → 자유 분배</p>
                   <p>사수</p>
-                  <p>'아이언 에로우' 1 → '크로스보우 마스터리' M → '아이언 에로우' M → '크로스보우 부스터' M → '파워 넉백' 20 → '포커스' 20 → 자유 분배</p>
+                  <p>'아이언 에로우' 1 → '크로스보우 마스터리' 5 → '크로스보우 부스터' 1 → '아이언 에로우' M → '크로스보우 마스터리' M → '크로스보우 부스터' M → '포커스' M → '파워 넉백' 11 → 자유 분배</p>
                   <p> 추가 내용 :</p>
                   <p>'캐시샵 > 상점 모음 > 소비 상점'에서 쉽게 화살을 구할 수 있기에 '소울 에로우' 스킬은 가장 나중에 배웁니다.</p>
                   <p>또한 파이널 어택은 발동 시에 사냥 효율을 떨어뜨리므로 배우지 않습니다.</p>
                   <br>
                   <p>3차 전직</p>
                   <p>레인저</p>
-                  <p>'스트레이프' 1 → '모탈 블로우' 5 → '에로우 레인' M → '스트레이프' M → '모탈 블로우' M → 자유 분배</p>
+                  <p>'스트레이프' 1 → '모탈 블로우' 5 → '에로우 레인' 9 → '모탈 블로우' M → '에로우 레인' M → '스트레이트' M → '파이어샷' M  → '쓰러스트' M  → 자유 분배</p>
                   <p>저격수</p>
-                  <p>'스트레이프' 1 → '모탈 블로우' 5 → '에로우 이럽션' M → '스트레이프' M → '모탈 블로우' M → 자유 분배</p>
+                  <p>'스트레이프' 1 → '모탈 블로우' 5 → '에로우 이럽션' 9 → '모탈 블로우' M → 에로우 이럽션' M  → '스트레이트' M → '아이스샷' M  → '쓰러스트' M  → 자유 분배</p>
                   <br>
                   <p>4차 전직</p>
                   <p>보우 마스터</p>
@@ -224,7 +288,8 @@
                   <p>신궁</p>
                   <p>'피어싱' 1 → '샤프 아이즈' 30 → '피어싱' 30 → '메이플 용사' 30 → '크로스보우 엑스퍼트' 30 → 자유 분배</p>
                 </div>
-              <h5>해적</h5>
+              <br>
+              <h5><해적></h5>
                 <div style="width:70%; margin:auto; text-align:left;">
                   <p>공통(1차스킬)</p>
                   <p>'더블 파이어'/'스트레이트' 1 → '퀵모션' M → '대쉬' M → '더블 파이어'/'스트레이트' M → '써머솔트 킥' 11</p>
@@ -251,12 +316,41 @@
                 <br>
           </div>
           <div Id="skill_quest" style="display:none">
+            <br>
             <h4>직업별 스킬북 퀘스트</h4>
             <br>
             <p style="width:70%; margin:auto; text-align:left;">
               직업별로 퀘스트를 깨야 얻을 수 있는 스킬에 대한 정보를 정리하였습니다.
             </p>
             <a href="./skill_quest" target="_blank"> 스킬 퀘스트 정보 사이트 </a>
+          </div>
+          <div Id='skill_imp' style="display:none">
+            <br>
+            <h4>마스터리북 정보</h4>
+            <p>마스터리북 정보는 게임 내에서 '캐시샵 > 드롭검색'에서 원하시는 스킬 마스터리북을 입력하시면 드롭하는 몬스터 정보를 확인할 수 있습니다.</p>
+            <br>
+            <h5>군밤 코인 사용</h5>
+            <p style="width:70%; margin:auto; text-align:left;">
+              '캐시샵 > 군밤코인 > 소비'로 가시면 군밤코인 3개( = 흥보코인 9개)를 이용하셔서 원하시는 마스터리북의 20,30 아이템을 얻을 수 있습니다.
+              ('<마스터리북>메이플 용사 20', '<마스터리북>메이플 용사 30' 제외)
+            </p>
+            <br>
+            <h5>레전드 메이플 코인 사용</h5>
+            <p style="width:70%; margin:auto; text-align:left;">
+              '캐시샵 > 제자교환 > 레전드 메이플 코인 30개로 30마스터리북 교환'로 가시면 레전드 메이플 코인 30개로 원하시는 마스터리북 30 아이템을 얻을 수 있습니다.
+              ('<마스터리북>메이플 용사 30' 제외)
+            </p>
+            <br>
+            <h5><마스터리북>메이플 용사</h5>
+            <p style="width:70%; margin:auto; text-align:left;">
+              '<마스터리북>메이플 용사 20'은 몬스터 '혼테일'이 드롭하기 때문에 '혼테일'을 잡을 수 없는 유저들은 자유시장 혹은 유저들에게 구매하시거나
+              혼테일 알바( 혼테일 입장 도와주는 것 )를 통해 얻으셔야합니다.
+            </p>
+            <br>
+            <p style="width:70%; margin:auto; text-align:left;">
+              '<마스터리북>메이플 용사 30'은 소속되신 길드에 마스터/부마스터 분들께 문의하셔서 얻는 방법이 있습니다.
+               뉴비 길드에 소속된 뉴비의 경우 'GP5000 교환권' 2장을 챙긴 후, '마디' 혹은 '검은삼월' 님에게 귓속말을 하시면 됩니다.
+            </p>
           </div>
         </div>
       </main>
