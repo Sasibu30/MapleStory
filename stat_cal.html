@@ -557,6 +557,16 @@
      }
      //magician_skill - end
 
+     function hide_seek(val){
+       if( document.getElementById(val).style.display == "none"){
+        document.getElementById(val).style.display = "";
+        document.getElementById(val+"T").innerText = "업데이트 내역 (접기)"
+      }else{
+        document.getElementById(val).style.display = "none";
+        document.getElementById(val+"T").innerText = "업데이트 내역 (펼치기)"
+      }
+     }
+
    </script>
    <body id='cover' class="text-center" style="margin:auto;">
      <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
@@ -569,6 +579,17 @@
 
       <!-- Main -->
       <main role="main" class="innercover">
+        <br>
+        <p> 새로운 계산을 위해서는 F5(새로고침) 해주세요!</p>
+        <a href="javascript:hide_seek('update')" Id="updateT">업데이트 내역 (펼치기)</a>
+        <div Id="update" style="display:none; width:40%; margin:auto; border:1px solid white; text-align:left; padding:1rem;">
+          <h5 style="text-align:center">5/4 업데이트</h5>
+          <p> 1. 마법사 불러오기 오류 수정</p>
+          <p> 2. 몬스터 방어율 고려 X</p>
+          <p> 3. 버프 스킬 추가 ( 메이플 용사/영웅의 메아리)</p>
+        </div>
+        <br>
+        <br>
           <!-- Job Input Table -->
           <table style="margin:auto; margin-bottom:4%; width:40%;">
             <thead style="font-size:1.5em;">
@@ -823,18 +844,21 @@
           </table>
 
           <!-- 버프 스킬 -->
-          <table style="margin:auto">
-            <tr>
-              <td>
-                <input type="checkbox" Name="메용" value="메용" onclick="oneCheckbox(this,'메용')">메이플용사
-              </td>
-              <td>
-                <input type="checkbox" Name="영메" value="영메" onclick="oneCheckbox(this,'영메')">영웅의 메아리 (4%)
-              </td>
-              <td>
-                <input type="checkbox" Name="영메" value="스영메" onclick="oneCheckbox(this,'영메')">스페셜 영웅의 메아리 (15%)
-              </td>
-            </tr>
+          <table style="margin:auto;">
+            <tbody>
+              <tr>
+                <td style="font-size:16px;"><strong>버프 스킬 선택</strong></td>
+                <td>
+                  <input type="checkbox" Name="메용" value="메용" onclick="oneCheckbox(this,'메용')">메이플 용사
+                </td>
+                <td>
+                  <input type="checkbox" Name="영메" value="영메" onclick="oneCheckbox(this,'영메')">영웅의 메아리 (4%)
+                </td>
+                <td>
+                  <input type="checkbox" Name="영메" value="스영메" onclick="oneCheckbox(this,'영메')">스페셜 영웅의 메아리 (15%)
+                </td>
+              </tr>
+            </tbody>
           </table>
 
           <!-- Result -->
