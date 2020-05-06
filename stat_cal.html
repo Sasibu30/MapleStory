@@ -312,7 +312,7 @@
          // stat4 = str*3.0+dex;
          stat1 = str*3.0*0.9*0.8+dex;
          stat2 = str*5.0+dex;
-       }else if( code.indexOf("M1") > 0 || code.indexOf("M2") > 0 || code.indexOf("M3") > 0 ){
+       }else if( code.indexOf("M1") >= 0 || code.indexOf("M2") >= 0 || code.indexOf("M3") >= 0 ){
          document.getElementById("DM").innerText = "스킬 데미지";
          stat1 = 0; stat2 = 0; at = (at + int)*bp; // 영메 고려
 
