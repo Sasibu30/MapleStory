@@ -346,9 +346,11 @@
        }else if( code == "B1W1" ){
          stat1 = dex*3.4*0.9*0.9+str;
          stat2 = dex*3.4+str;
+         at = at + 10;
        }else if( code == "B2W1" ){
          stat1 = dex*3.6*0.9*0.9+str;
          stat2 = dex*3.6+str;
+         at = at + 10;
        }else if( code == "P1W1" ){
          stat1 = dex*3.6*0.9*0.6+str;
          stat2 = dex*3.6+str;
@@ -363,10 +365,26 @@
          max1 = parseInt(stat2/100*at);
        }
 
-       //print out
-       document.getElementById("StatAP").value = min1+"~"+max1;
+       //warning
+       if( isNaN(min1) || isNaN(max1) ){
+         if( code.indexOf("M1") >= 0 || code.indexOf("M2") >= 0 || code.indexOf("M3") >= 0  ){
+           if(document.getElementById("skill").value == ""){
+            alert("스킬을 선택해주세요!");
+           }
+         }else{
+           alert("입력값을 확인해주세요!");
+         }
 
-       alert("새로운 계산을 원하실 경우 새로고침을 누루신 후에 이용해주세요!");
+         document.getElementById("StatAP").value = "오류 발생!";
+       }
+
+       if( !isNaN(min1) && !isNaN(max1) ){
+         //print out
+         document.getElementById("StatAP").value = min1+"~"+max1;
+
+         alert("새로운 계산을 원하실 경우 새로고침을 누루신 후에 이용해주세요!");
+       }
+
      }
      // Calculator -end
 
@@ -560,12 +578,21 @@
      function hide_seek(val){
        if( document.getElementById(val).style.display == "none"){
         document.getElementById(val).style.display = "";
-        document.getElementById(val+"T").innerText = "업데이트 내역 (접기)"
+        if( val == "update"){
+          document.getElementById(val+"T").innerText = "업데이트 내역 (접기)";
+        }else if(val == "int"){
+          document.getElementById(val+"T").innerText = "사용법 (접기)";
+        }
       }else{
         document.getElementById(val).style.display = "none";
-        document.getElementById(val+"T").innerText = "업데이트 내역 (펼치기)"
+        if(val == "update"){
+          document.getElementById(val+"T").innerText = "업데이트 내역 (펼치기)";
+        }else if(val == "int"){
+          document.getElementById(val+"T").innerText = "사용법 (펼치기)";
+        }
       }
      }
+
 
    </script>
    <body id='cover' class="text-center" style="margin:auto;">
@@ -583,10 +610,23 @@
         <p> 새로운 계산을 위해서는 F5(새로고침) 해주세요!</p>
         <a href="javascript:hide_seek('update')" Id="updateT">업데이트 내역 (펼치기)</a>
         <div Id="update" style="display:none; width:40%; margin:auto; border:1px solid white; text-align:left; padding:1rem;">
-          <h5 style="text-align:center">5/4 업데이트</h5>
-          <p> 1. 마법사 불러오기 오류 수정</p>
-          <p> 2. 몬스터 방어율 고려 X</p>
-          <p> 3. 버프 스킬 추가 ( 메이플 용사/영웅의 메아리)</p>
+          <h5 style="text-align:center">5/14 업데이트</h5>
+          <p> 1. 궁수 4차 스킬 고려(엑스퍼트)</p>
+          <p> 2. 사용 방법 안내문 추가</p>
+          <p> 3. 입력값 검증 기능 추가</p>
+        </div>
+        <br>
+        <a href="javascript:hide_seek('int')" Id="intT">사용법 (펼치기)</a>
+        <div Id="int" style="display:none; width:40%; margin:auto; border:1px solid white; text-align:left; padding:1rem;">
+          <h4>- 사용 방법 -</h4>
+          <p>1. 직업 및 직업 계열, 무기 종류 선택</p>
+          <p>2. 능력치 및 아이템에 붙은 공격력/마력 입력</p>
+          <img src="./img/stat_int1.png" width="50%" style="margin:1%;">
+          <p>3. 버프 스킬 선택 ( 선택 하지 않아도 계산 가능 )</p>
+          <p>4. '계산하기' 클릭 ( 마법사의 경우 스킬 선택 후 계산하기 클릭)</p>
+          <h4>- 입력 정보 저장 방법-</h4>
+          <p>5. '저장하기' 클릭할 경우 입력한 데이터가 저장</p>
+          <p>6. '불러오기' 클릭 후 'xxx.sasibu' 파일을 선택하여 입력값 불러오고 수정 및 계산 가능</p>
         </div>
         <br>
         <br>
