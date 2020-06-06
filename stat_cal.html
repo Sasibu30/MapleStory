@@ -181,6 +181,8 @@
          val = val.replace("M1",document.getElementById("C_Magician").value);
        }
        document.getElementById("Code").value = val;
+
+       alert("마법사의 경우, 무기/방어구/장신구/기타 목록에 마력 값을 입력해주세요!");
      }
      //select_return -end
 
@@ -264,29 +266,51 @@
          }
        }
 
+       if( rtn == 1 ){
+         alert("능력치를 입력해주세요!");
+       }
+
        if( at <= 0 && rtn == 0){
-         rtn = 2; //공격력/마력 입력 오류
+         alert("공격력/마력을 입력해주세요!"); //공격력/마력 입력 오류
+         rtn = 1;
        }
 
        if( (code.indexOf("M1") >= 0 || code.indexOf("M2") >= 0 || code.indexOf("M3") >= 0) && rtn == 0 ){
          if(document.getElementById("skill").value == ""){
-           rtn = 3; //마법사 스킬 선택 오류
+           alert("스킬을 선택해주세요!"); //마법사 스킬 선택 오류
+           rtn = 1;
          }
        }
 
-       //warning print out
-       if( rtn == 1 ){
-         alert("능력치를 입력해주세요!");
-       }else if( rtn == 2 ){
-         alert("공격력/마력을 입력해주세요!");
-       }else if(rtn == 3){
-         alert("스킬을 선택해주세요!");
+       if( document.getElementById("EAT35").value == 0 && rtn == 0 ){
+         con = confirm("비보 공격력/마력 입력하셨나요?");
+         if(!con){
+           document.getElementById("EAT35").focus();
+           rtn = 1;
+         }else{
+           rtn = 0;
+         }
+       }
+
+       if( document.getElementById("AT2").value == 0 && rtn == 0 && ( code.indexOf("T1")==0 || code.indexOf("B")==0 || code.indexOf("P1")==0 ) ){
+         con = confirm("보조무기 부분에 표창/화살/총알 정보를 입력하셨나요? \r\n(궁수 소울에로우 사용 시 확인 클릭)");
+         if(!con){
+           document.getElementById("AT2").focus();
+         }else{
+           rtn = 0;
+         }
        }
 
        // buff stat
+       var b0 = document.getElementsByName("정축").length;
        var b1 = document.getElementsByName("메용").length;
        var b2 = document.getElementsByName("영메").length;
 
+       for(var i=0; i<b1; i++){
+         if(document.getElementsByName("정축")[i].checked == true){
+              b0 = document.getElementsByName("정축")[i].value;
+            }
+       }
        for(var i=0; i<b1; i++){
          if(document.getElementsByName("메용")[i].checked == true){
               b1 = document.getElementsByName("메용")[i].value;
@@ -296,6 +320,10 @@
          if(document.getElementsByName("영메")[i].checked == true){
               b2 = document.getElementsByName("영메")[i].value;
             }
+       }
+
+       if(b0=="정축"){
+         at = at + 20;
        }
 
        if(b1 == "메용"){
@@ -420,7 +448,7 @@
          //print out
          document.getElementById("StatAP").value = min1+"~"+max1;
 
-         alert("새로운 계산을 원하실 경우 새로고침을 누루신 후에 이용해주세요!");
+         alert("새로운 계산을 할 경우 새로고침을 눌러주세요! \r\n(정령의 축복이 있을 경우 버프 스킬 선택에서 선택해주세요!)");
        }
 
      }
@@ -650,10 +678,9 @@
         <p> 새로운 계산을 위해서는 F5(새로고침) 해주세요!</p>
         <a href="javascript:hide_seek('update')" Id="updateT">업데이트 내역 (펼치기)</a>
         <div Id="update" style="display:none; width:40%; margin:auto; border:1px solid white; text-align:left; padding:1rem;">
-          <h5 style="text-align:center">5/15 업데이트</h5>
-          <p> 1. 궁수 4차 스킬 고려(엑스퍼트)</p>
-          <p> 2. 사용 방법 안내문 추가</p>
-          <p> 3. 입력값 검증 기능 추가</p>
+          <h5 style="text-align:center">6/6 업데이트</h5>
+          <p> 1. 사용 방법 안내문 추가</p>
+          <p> 2. 정축/비보 확인 안내 추가</p>
         </div>
         <br>
         <a href="javascript:hide_seek('int')" Id="intT">사용법 (펼치기)</a>
@@ -664,6 +691,12 @@
           <img src="./img/stat_int1.png" width="50%" style="margin:1%;">
           <p>3. 버프 스킬 선택 ( 선택 하지 않아도 계산 가능 )</p>
           <p>4. '계산하기' 클릭 ( 마법사의 경우 스킬 선택 후 계산하기 클릭)</p>
+          <br>
+          <h4>- 마법사 간단하게 계산하기 -</h4>
+          <p>1. 마법사 직업 계열 선택</p>
+          <p>2. 능력치 입력칸에 INT,LUK 입력</p>
+          <p>3. 게임 내 능력치 상세 정보의 마력에서 INT를 뺀 값을 '무기 공격력/마력'에 입력</p>
+          <p>4. 버프 스킬 및 스킬 선택 후에 계산 하기 클릭</p>
           <br>
           <h4>- 다른 직업 선택 하여 계산 할 경우 -</h4>
           <p>1. 페이지 새로고침(F5)을 해주세요.</p>
@@ -869,7 +902,7 @@
                 <td>
                   <input type="textbox" Id="EAT34" maxlength="5" placeholder="0">
                 </td>
-                <td>기타</td>
+                <td>비보</td>
                 <td>
                   <input type="textbox" Id="EAT35" maxlength="5" placeholder="0">
                 </td>
@@ -933,6 +966,9 @@
             <tbody>
               <tr>
                 <td style="font-size:16px;"><strong>버프 스킬 선택</strong></td>
+                <td>
+                  <input type="checkbox" Name="정축" value="정축" onclick="oneCheckbox(this,'정축')">정령의축복
+                </td>
                 <td>
                   <input type="checkbox" Name="메용" value="메용" onclick="oneCheckbox(this,'메용')">메이플 용사
                 </td>
