@@ -17,29 +17,20 @@ job = [
     {'캡틴'}
     ];
 
-%섀도어
-skill_step = 650;
-skill_sh = 350;
-hits_step = 4;
-hits_sh = 2; %부스 + 시브즈 + 시브즈 이기에 시브즈 1회 시전 타수 = 2 로 설정
-mob_step = 5;
-mob_sh = 6;
-
 %바이퍼 드래곤스트라이크/샤크웨이브 데이터
 skill_ds = 450;
 skill_sw = 900;
-hits_ds = 3; %타수
-hits_sw = 2;
-mob_ds = 8; %공격 몹수
-mob_sw = 6;
+npm_ds=3;
+npm_sw=2;
 
+%보우마스터 모탈블로우 데이터
+bow1_opp = 0.1;
+bow1_mul = 3;
 %% input
 %=== 입력값(능력치) ===
-lv = 1400; %정복자 레벨
+lv = 300; %정복자 레벨
 ap_premium = 1400; %스텍작 횟수(풀)
-No_MAX = 10*10^6; %맥뎀 제한 수치
-No_MAX0 = 10*10^6; %맥뎀 제한 수치(법격)
-
+No_MAX = 5*10^6; %맥뎀 제한 수치
 buff_mul = 1; %데미지 기본 증폭 계수
 
 %버프 적용 질문지
@@ -83,7 +74,7 @@ phy_mag_ap=[
 %직업 무기 선택(입력) 데이터 
 job_weapon_factor = [
     {'히어로','두손검'} 
-    {'다크나이트','폴암'}
+    {'다크나이트','창'}
     {'팔라딘','한손검'}
     {'나이트로드','아대'}
     {'섀도어','단검'}
@@ -170,18 +161,18 @@ weapon_factor(9:10,4) = {0.9};
 
 %=== 직업 스킬 NPM 데이터 ===
 skill_NPM = [
-    {'히어로','브랜디쉬',95,87,80,74,72,67,63,0}
-    {'다크나이트','폴암 쓰레셔',0,102,0,92,0,0,0,0}
-    {'팔라딘','생츄어리',5,5,5,5,5,5,5,5}%{'팔라딘','어차',100,90,83,80,74,69,67,0}
-    {'나이트로드','어벤져',95,0,0,0,0,0,0,0}
-    {'섀도어','부메랑 스탭/시브즈',31,0,0,0,0,0,0,0}
-    {'아크메이지(썬,콜)','블리자드',19,0,0,0,0,0,0,0} %{'아크메이지(썬,콜)','체인 라이트닝',87,0,0,0,0,0,0,0} 
-    {'아크메이지(불,독)','메테오',19,0,0,0,0,0,0,0} %{'아크메이지(불,독)','패럴라이징',83,0,0,0,0,0,0,0}  
-    {'비숍','제네시스',22,0,0,0,0,0,0,0}
-    {'보우마스터','폭풍의시',440,440,440,440,440,440,440,440}
-    {'신궁','피어싱',94,0,80,0,0,0,0,0} 
+    {'히어로','브랜디쉬',95,87,80,0,0,0,0,0}
+    {'다크나이트','스피어 버스터',74,69,66,61,59,0,0,0}
+    {'팔라딘','블래스트',95,87,0,0,0,0,0,0}
+    {'나이트로드','트리플스로우',100,0,0,0,0,0,0,0}
+    {'섀도어','암살',37,0,0,0,0,0,0,0}
+    {'아크메이지(썬,콜)','체인 라이트닝',87,0,0,0,0,0,0,0}
+    {'아크메이지(불,독)','패럴라이징',83,0,0,0,0,0,0,0}
+    {'비숍','엔젤레이',74,0,0,0,0,0,0,0}
+    {'보우마스터','폭풍의시',440,440,440,440,440,440,440,440} %모탈 10% 3배
+    {'신궁','스트레이트',94,86,82,76,70,0,0,0}
     {'바이퍼','드래곤 스트라이크/샤크웨이브',42,0,0,0,0,0,0,0}
-    {'캡틴','배틀쉽:토르페도',83,77,0,0,0,0,0,0}
+    {'캡틴','배틀쉽:캐논',100,96,0,0,0,0,0,0}
 ];
 
 %=== 버프스킬 ===
@@ -189,10 +180,12 @@ skill_NPM = [
 buff0 = [ {'공용', '메이플 용사', 1.15} ];
 buff1 = [ 
     {'아크메이지(썬,콜)', '엘리먼트 엠플리케이션', 1.5}
-    {'아크메이지(불,독)', '엘리먼트 엠플리케이션', 1.5}
+    {'아크메이지(불,독)', '엘리먼트 엠플리케이션', 1.65}
     {'히어로', '어드밴스드 콤보', 1.9}
+    {'섀도어', '베놈', 1.1}
     {'다크나이트', '버서크', 2.1}
-    {'나이트로드', '쉐도우파트너', 1.6}
+    {'신궁', '모탈블로우', 2.5}
+    {'캡틴', '어드밴스드 호밍', 1.2}
     ]; 
 
 %공격력/마력 추가 스킬
@@ -206,29 +199,29 @@ buff2 = [
     {'바이퍼','에너지차지',30}
     {'아크메이지(썬,콜)','메디테이션',20}
     {'아크메이지(불,독)','메디테이션',20}
+    {'비숍','블레스',40}
     ];
 
 %=== 공격 스킬 ===
 %패치 전
+%
 skill = [
-    {'히어로','브랜디쉬',450,2,4} 
-    {'다크나이트','폴암 쓰레셔',410,1,6} 
-    {'팔라딘','생츄어리',0,1,15}%{'팔라딘','어차',500,1,8} 
-    {'나이트로드','어벤져',200,1,6}
-    {'섀도어','부메랑 스탭/시브즈',650,1,0}      
-    {'아크메이지(썬,콜)','블리자드',320,2,15}
-    {'아크메이지(불,독)','메테오',320,2,15}
-    {'비숍','제네시스',420,2,15}
-    {'보우마스터','폭풍의시',300,1,1}
-    {'신궁','피어싱',250,1,6} 
-    {'바이퍼','드래곤 스트라이크/샤크웨이브',3150,1,0}
-    {'캡틴','배틀쉽:토르페도',1200,1,6}
+    {'히어로','브랜디쉬',450,2} 
+    {'다크나이트','스피어 버스터',250,4} 
+    {'팔라딘','블래스트',700,4} 
+    {'나이트로드','트리플스로우',200,10}
+    {'섀도어','암살',1440,4}
+    {'아크메이지(썬,콜)','체인 라이트닝',500,3}
+    {'아크메이지(불,독)','패럴라이징',240,4}
+    {'비숍','엔젤레이',240,2}
+    {'보우마스터','폭풍의시',300,1}
+    {'신궁','스트레이트',200,6}
+    {'바이퍼','드래곤 스트라이크/샤크웨이브',3150,1}
+    {'캡틴','배틀쉽:캐논',480,5}
     ];
+%}
 
-%패치 후
 
-
-skill(:,8) = skill(:,5);
 one_hit_skill_dmg(:,2) = skill(:,2); %사용 스킬 입력
 %% 입력값 기반 능력치 계산 
 %=== 기본 크리티컬 확률/추가 크리티컬 데미지 ===
@@ -297,6 +290,13 @@ end
 for ii=1:a
     jj = cell2mat(job_weapon_factor(ii,6))+2;
     skill(ii,7) = {cell2mat(skill_NPM(ii,jj))};
+    
+    %팔라딘 고려
+    if strcmp(cell2mat(skill(ii,2)),'블래스트/생츄어리')
+        sNPM = 5; %생츄어리 시전 가능 횟수
+        skill(ii,7) = { floor(cell2mat(skill_NPM(ii,jj))*(1-sNPM/60)) };
+        skill(ii,8) = {sNPM}; 
+    end
     
     %마법사 따로 고려
     if strcmp(cell2mat(skill(ii,1)),'비숍') || strcmp(cell2mat(skill(ii,1)),'아크메이지(썬,콜)') || strcmp(cell2mat(skill(ii,1)),'아크메이지(불,독)')
@@ -413,12 +413,10 @@ for ii=1:a
     skill_max_dmg2 = floor(buff_mul*max*skill_fac1/100);
     
     % 맥뎀 제한
-    % - 신궁 맥뎀 제한(모탈 터질 경우)
-    %{
+    % - 신궁 맥뎀 제한
     if strcmp(str,'신궁')
          No_MAX =  No_MAX*2;
     end
-    %}
     
     if skill_min_dmg1 >= No_MAX
        skill_min_dmg1 = No_MAX-1; 
@@ -432,12 +430,9 @@ for ii=1:a
     if skill_max_dmg2 >= No_MAX
        skill_max_dmg2 = No_MAX-1;    
     end
-    
-    %{
     if strcmp(str,'신궁')
          No_MAX =  No_MAX/2; % 다시 원래 값으로 되돌리기
     end
-    %}
     
     %데이터 수집
     one_hit_skill_dmg(ii,3) = {skill_min_dmg1}; %노크리
@@ -445,21 +440,18 @@ for ii=1:a
     one_hit_skill_dmg(ii,5) = {skill_min_dmg2}; %크리
     one_hit_skill_dmg(ii,6) = {skill_max_dmg2}; %크리 
     
-    %공격 몹 수
-    mob = cell2mat(skill(ii,8));
+    DPM(ii,2) = { floor( (skill_min_dmg1*skill_hit_1+ skill_min_dmg2*skill_hit_2) ) };
+    DPM(ii,3) = { floor( (skill_max_dmg1*skill_hit_1+ skill_max_dmg2*skill_hit_2) ) };
     
-    DPM(ii,2) = { floor( (skill_min_dmg1*skill_hit_1+ skill_min_dmg2*skill_hit_2)*mob ) };
-    DPM(ii,3) = { floor( (skill_max_dmg1*skill_hit_1+ skill_max_dmg2*skill_hit_2)*mob ) };
-    
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %별도 공식 스킬 재계산
-    % - 나이트로드 (어벤져) 
+    % - 나이트로드 (트리플 스로우)
     if strcmp('나이트로드', str)
         %본체(1타)
-        skill0_min_dmg1 = floor(min*skill_fac0/100);
-        skill0_min_dmg2 = floor(min*skill_fac1/100);
-        skill0_max_dmg1 = floor(max*skill_fac0/100);
-        skill0_max_dmg2 = floor(max*skill_fac1/100);
+        skill0_min_dmg1 = floor( phy_ap/100*p_ap*2.5*(skill_fac0/100) ); 
+        skill0_min_dmg2 = floor( phy_ap/100*p_ap*2.5*(skill_fac1/100) );
+        skill0_max_dmg1 = floor( phy_ap/100*p_ap*5.0*(skill_fac0/100) );
+        skill0_max_dmg2 = floor( phy_ap/100*p_ap*5.0*(skill_fac1/100) );
         
         if skill0_min_dmg1 >= No_MAX
         	skill0_min_dmg1 = No_MAX-1;
@@ -473,127 +465,58 @@ for ii=1:a
         if skill0_max_dmg2 >= No_MAX
             skill0_max_dmg2 = No_MAX-1;    
         end
-        
+            
         %그림자(1타)     
-        skill1_min_dmg1 = floor( (buff_mul-1)*skill0_min_dmg1 ); 
-        skill1_min_dmg2 = floor( (buff_mul-1)*skill0_min_dmg2 );
-        skill1_max_dmg1 = floor( (buff_mul-1)*skill0_max_dmg1 );
-        skill1_max_dmg2 = floor( (buff_mul-1)*skill0_max_dmg2 );
-        
+        %skill1_min_dmg1 = floor( (buff_mul-1)*skill0_min_dmg1 ); 
+        %skill1_min_dmg2 = floor( (buff_mul-1)*skill0_min_dmg2 );
+        %skill1_max_dmg1 = floor( (buff_mul-1)*skill0_max_dmg1 );
+        %skill1_max_dmg2 = floor( (buff_mul-1)*skill0_max_dmg2 );
+        skill1_min_dmg1 = 0;
+        skill1_min_dmg2 = 0;
+        skill1_max_dmg1 = 0;
+        skill1_max_dmg2 = 0;
+            
         %데이터 수집
         one_hit_skill_dmg(ii,3) = {skill0_min_dmg1}; %노크리
         one_hit_skill_dmg(ii,4) = {skill0_max_dmg1}; %노크리
         one_hit_skill_dmg(ii,5) = {skill0_min_dmg2}; %크리
         one_hit_skill_dmg(ii,6) = {skill0_max_dmg2}; %크리 
     
-        DPM(ii,2) = {  floor( ((skill0_min_dmg1+skill1_min_dmg1)*skill_hit_1 + (skill0_min_dmg2+skill1_min_dmg2)*skill_hit_2 ))*mob };
-        DPM(ii,3) = {  floor( ((skill0_max_dmg1+skill1_max_dmg1)*skill_hit_1 + (skill0_max_dmg2+skill1_max_dmg2)*skill_hit_2 ))*mob };
+        DPM(ii,2) = {  floor( (skill0_min_dmg1+skill1_min_dmg1)*skill_hit_1 + (skill0_min_dmg2+skill1_min_dmg2)*skill_hit_2 ) };
+        DPM(ii,3) = {  floor( (skill0_max_dmg1+skill1_max_dmg1)*skill_hit_1 + (skill0_max_dmg2+skill1_max_dmg2)*skill_hit_2 ) };
         clear skill0_min_dmg1 skill0_min_dmg2 skill0_max_dmg1 skill0_max_dmg2 skill1_min_dmg1 skill1_min_dmg2 skill1_max_dmg1 skill1_max_dmg2
-    end
-    
-    % - 신궁 (피어싱)
-    if strcmp('피어싱',cell2mat(skill(ii,2)))
-        mobs = cell2mat(skill(ii,8));
-        
-        DPM_min_sum = floor( (skill_min_dmg1*skill_hit_1) + (skill_min_dmg2*skill_hit_2) );
-        DPM_max_sum = floor( (skill_max_dmg1*skill_hit_1) + (skill_max_dmg2*skill_hit_2) );
-        
-        for jj=2:mobs
-            DPM_min_sum = DPM_min_sum + floor( (skill_min_dmg1*1.2^(jj-1)*skill_hit_1) + (skill_min_dmg2*1.2^(jj-1)*skill_hit_2) );
-            DPM_max_sum = DPM_max_sum + floor( (skill_max_dmg1*1.2^(jj-1)*skill_hit_1) + (skill_max_dmg2*1.2^(jj-1)*skill_hit_2) );
-        end
-        
-        DPM(ii,2) = {DPM_min_sum};
-        DPM(ii,3) = {DPM_max_sum};
-        clear DPM_min_sum DPM_max_sum mobs
     end
     
     % - 팔라딘 (생츄어리)
     %
-    if strcmp('생츄어리', cell2mat(skill(ii,2)))
+    if strcmp('블래스트/생츄어리', cell2mat(skill(ii,2)))
         crr = (add_dmg+100)/100;
-        npmm = cell2mat(skill(ii,7));
-        sca1 = floor( buff_mul*( skill_cri_opp*crr)*(p_ap*400+1200*phy_ap)*55/25);
-        sca2 = floor( buff_mul*((1-skill_cri_opp))*(p_ap*400+1200*phy_ap)*55/25);
-        if sca1 >= No_MAX0
-            sca1 = No_MAX0-1;
+        npmm = cell2mat(skill(ii,8));
+        sca1 = floor( buff_mul*skill_cri_opp*crr*(p_ap*400+1200*phy_ap)*55/25);
+        sca2 = floor( buff_mul*(1-skill_cri_opp)*(p_ap*400+1200*phy_ap)*55/25);
+        if sca1 >= No_MAX
+            sca1 = No_MAX-1;
         end
-        if sca2 >= No_MAX0
-            sca2 = No_MAX0-1; 
+        if sca2 >= No_MAX
+            sca2 = No_MAX-1; 
         end
     
-        DPM(ii,2) = { (sca1 + sca2)*mob*npmm};
-        DPM(ii,3) = { (sca1 + sca2)*mob*npmm };
+        DPM(ii,2) = { cell2mat(DPM(ii,2)) + (sca1 + sca2)*npmm };
+        DPM(ii,3) = { cell2mat(DPM(ii,3)) + (sca1 + sca2)*npmm };
         clear crr npmm sca1 sca2;
     end
-    %}
+    %
     
-    % - 섀도어 (부스/시브즈)
-    if strcmp('섀도어', str)
-       %부스
-       skill_fac0 = skill_step;                         
-       skill_fac1 = skill_step + 100 + add_dmg;
-       skill1_min_dmg1 = floor(buff_mul*min*skill_fac0/100);
-       skill1_min_dmg2 = floor(buff_mul*min*skill_fac1/100);
-       skill1_max_dmg1 = floor(buff_mul*max*skill_fac0/100);
-       skill1_max_dmg2 = floor(buff_mul*max*skill_fac1/100);
-       
-       %시브즈
-       skill_fac0 = skill_sh;
-       skill_fac1 = skill_sh + 100 + add_dmg;                                   
-       skill2_min_dmg1 = floor(buff_mul*min*skill_fac0/100);
-       skill2_min_dmg2 = floor(buff_mul*min*skill_fac1/100);
-       skill2_max_dmg1 = floor(buff_mul*max*skill_fac0/100);
-       skill2_max_dmg2 = floor(buff_mul*max*skill_fac1/100);
-       
-       % 맥뎀 제한
-        if skill1_min_dmg1 >= No_MAX
-           skill1_min_dmg1 = No_MAX-1; 
-        end
-        if skill1_min_dmg2 >= No_MAX
-           skill1_min_dmg2 = No_MAX-1; 
-        end
-        if skill1_max_dmg1 >= No_MAX
-           skill1_max_dmg1 = No_MAX-1; 
-        end
-        if skill1_max_dmg2 >= No_MAX
-           skill1_max_dmg2 = No_MAX-1;    
-        end
-        
-        if skill2_min_dmg1 >= No_MAX
-           skill2_min_dmg1 = No_MAX-1; 
-        end
-        if skill2_min_dmg2 >= No_MAX
-           skill2_min_dmg2 = No_MAX-1; 
-        end
-        if skill2_max_dmg1 >= No_MAX
-           skill2_max_dmg1 = No_MAX-1; 
-        end
-        if skill2_max_dmg2 >= No_MAX
-           skill2_max_dmg2 = No_MAX-1;    
-        end
-        
-        %데이터 수집
-        one_hit_skill_dmg(ii,3) = {skill1_min_dmg1}; %노크리
-        one_hit_skill_dmg(ii,4) = {skill1_max_dmg1}; %노크리
-        one_hit_skill_dmg(ii,5) = {skill1_min_dmg2}; %크리
-        one_hit_skill_dmg(ii,6) = {skill1_max_dmg2}; %크리
-        
-        one_hit_skill_dmg(ii,7) = {skill2_min_dmg1}; %노크리
-        one_hit_skill_dmg(ii,8) = {skill2_max_dmg1}; %노크리
-        one_hit_skill_dmg(ii,9) = {skill2_min_dmg2}; %크리
-        one_hit_skill_dmg(ii,10) = {skill2_max_dmg2}; %크리
-        
-        DPM(ii,2) = {  floor( (skill1_min_dmg1*hits_step*mob_step+skill2_min_dmg1*hits_sh*mob_sh)*skill_hit_1 + (skill1_min_dmg2*hits_step*mob_step+skill2_min_dmg2*hits_sh*mob_sh)*skill_hit_2 ) };
-        DPM(ii,3) = {  floor( (skill1_max_dmg1*hits_step*mob_step+skill2_max_dmg1*hits_sh*mob_sh)*skill_hit_1 + (skill1_max_dmg2*hits_step*mob_step+skill2_max_dmg2*hits_sh*mob_sh)*skill_hit_2 ) };
-        clear  skill_step skill_sh npm_step npm_sh mob_step mob_sh;
-        clear  skill1_min_dmg1 skill1_min_dmg2 skill1_max_dmg1 skill1_max_dmg2;
-        clear  skill2_min_dmg1 skill2_min_dmg2 skill2_max_dmg1 skill2_max_dmg2;
-        
+    % - 보우마스터
+    if strcmp(cell2mat(skill(ii,2)),'폭풍의시')
+        DPM(ii,2) = { floor( (skill_min_dmg1*skill_hit_1+ skill_min_dmg2*skill_hit_2)*((1-bow1_opp + bow1_opp*bow1_mul)) ) };
+        DPM(ii,3) = { floor( (skill_max_dmg1*skill_hit_1+ skill_max_dmg2*skill_hit_2)*((1-bow1_opp + bow1_opp*bow1_mul)) ) };
+        clear bow1_opp bow1_mul
     end
+    
     % - 바이퍼
     if strcmp('바이퍼', str)
-        %드래곤스트라이크 1타(450퍼 3번 8마리)
+        %드래고스트라이크 1타(450퍼 3번 8마리)
         skill_fac0 = skill_ds;
         skill_fac1 = skill_ds + 100 + add_dmg;
         skill1_min_dmg1 = floor(buff_mul*min*skill_fac0/100);
@@ -603,7 +526,7 @@ for ii=1:a
         
         %샤크웨이브 1타(900퍼 2타 6마리)
         skill_fac0 = skill_sw;
-        skill_fac1 = skill_sw + 100 + add_dmg;
+        skill_fac1 = skill_sw + 100+ add_dmg;
         skill2_min_dmg1 = floor(buff_mul*min*skill_fac0/100);
         skill2_min_dmg2 = floor(buff_mul*min*skill_fac1/100);
         skill2_max_dmg1 = floor(buff_mul*max*skill_fac0/100);
@@ -646,22 +569,12 @@ for ii=1:a
         one_hit_skill_dmg(ii,8) = {skill2_max_dmg1}; %노크리
         one_hit_skill_dmg(ii,9) = {skill2_min_dmg2}; %크리
         one_hit_skill_dmg(ii,10) = {skill2_max_dmg2}; %크리
-        
-        %샤크웨이브 반감 고려
-        sum_skill2_min_dmg1 = 0; sum_skill2_max_dmg1=0;sum_skill2_min_dmg2=0;sum_skill2_max_dmg2=0;
-        for jjj=1:mob_sw
-            sum_skill2_min_dmg1 = sum_skill2_min_dmg1+skill2_min_dmg1/(2^(jjj-1));
-            sum_skill2_max_dmg1 = sum_skill2_max_dmg1+skill2_max_dmg1/(2^(jjj-1));
-            sum_skill2_min_dmg2 = sum_skill2_min_dmg2+skill2_min_dmg2/(2^(jjj-1));
-            sum_skill2_max_dmg2 = sum_skill2_max_dmg2+skill2_max_dmg2/(2^(jjj-1));
-        end
-        
-        DPM(ii,2) = {  floor( (skill1_min_dmg1*hits_ds*mob_ds + sum_skill2_min_dmg1*hits_sw)*skill_hit_1 + (skill1_min_dmg2*hits_ds*mob_ds + sum_skill2_min_dmg2*hits_sw)*skill_hit_2 ) };
-        DPM(ii,3) = {  floor( (skill1_max_dmg1*hits_ds*mob_ds + sum_skill2_max_dmg1*hits_sw)*skill_hit_1 + (skill1_max_dmg2*hits_ds*mob_ds + sum_skill2_max_dmg2*hits_sw)*skill_hit_2 ) };
-        clear  skill_ds skill_sw npm_ds npm_sw mob_ds mob_sw;
+    
+        DPM(ii,2) = {  floor( (skill1_min_dmg1*npm_ds+skill2_min_dmg1*npm_sw)*skill_hit_1 + (skill1_min_dmg2*npm_ds+skill2_min_dmg2*npm_sw)*skill_hit_2 ) };
+        DPM(ii,3) = {  floor( (skill1_max_dmg1*npm_ds+skill2_max_dmg1*npm_sw)*skill_hit_1 + (skill1_max_dmg2*npm_ds+skill2_max_dmg2*npm_sw)*skill_hit_2 ) };
+        clear  skill_ds skill_sw npm_ds npm_sw;
         clear  skill1_min_dmg1 skill1_min_dmg2 skill1_max_dmg1 skill1_max_dmg2;
         clear  skill2_min_dmg1 skill2_min_dmg2 skill2_max_dmg1 skill2_max_dmg2;
-        clear sum_skill2_min_dmg1 sum_skill2_max_dmg1 sum_skill2_min_dmg2 sum_skill2_max_dmg2
     end
 end
 
@@ -708,21 +621,18 @@ for ii=6:8
     max1 = floor( skill_fac1*buff_mul*((0.0033665*(special_buff*(p_ap+mag_ap))^2 + 3.3*(special_buff*(p_ap+mag_ap)) + 0.5*p_ap)*cell2mat(skill(ii,3))/100) ); %1타 데미지
     
     %맥뎀 제한
-    if min0 >= No_MAX0
-        min0 = No_MAX0-1;
+    if min0 >= No_MAX
+        min0 = No_MAX-1;
     end
-    if max0 >= No_MAX0
-        max0 = No_MAX0-1;
+    if max0 >= No_MAX
+        max0 = No_MAX-1;
     end 
-    if min1 >= No_MAX0
-        min1 = No_MAX0-1;
+    if min1 >= No_MAX
+        min1 = No_MAX-1;
     end
-    if max1 >= No_MAX0
-        max1 = No_MAX0-1;
+    if max1 >= No_MAX
+        max1 = No_MAX-1;
     end 
-    
-    %공격 몹 수
-    mob = cell2mat(skill(ii,8));
     
     %데이터 수집
     one_hit_skill_dmg(ii,3) = {min0}; %노크리
@@ -730,51 +640,29 @@ for ii=6:8
     one_hit_skill_dmg(ii,5) = {min1}; %크리
     one_hit_skill_dmg(ii,6) = {max1}; %크리 
     
-    DPM(ii,2) = {(min0*skill_hit_1 + min1*skill_hit_2)*mob};
-    DPM(ii,3) = {(max0*skill_hit_1 + max1*skill_hit_2)*mob};
+    DPM(ii,2) = {min0*skill_hit_1 + min1*skill_hit_2};
+    DPM(ii,3) = {max0*skill_hit_1 + max1*skill_hit_2};
 end
  
-%% 순위 나열 (평균 사냥기 DPM 기준)
+%% 순위 나열 (평균 보스 DPM 기준)
 [a,b] = size(DPM); clear b;
 for ii=1:a
    DPM(ii,4) = {floor( ( cell2mat(DPM(ii,2)) + cell2mat(DPM(ii,3)) )/2 )};
 end
-DPM_rank0 = sort(cell2mat(DPM(:,4)),'Descend');
+DPM_rank0 = sort(cell2mat(DPM(:,4)),'Descend'); 
 for ii=1:a
     DPM_rank(ii,6) = {DPM_rank0(ii)};
 end
 for ii=1:a
    k = find(cell2mat(DPM(:,4)) == cell2mat(DPM_rank(ii,6)));
+   DPM_rank(ii,1) = DPM(k,1);
    
-   %순위 매기기
-   [c,d] = size(k); clear d;
-   if c > 1 %동순위 있을 경우
-       for iii=1:c
-           kk = k(iii);
-           DPM_rank(ii,1) = DPM(kk,1);
-
-           DPM_rank(ii,2) = phy(kk,2);
-           DPM_rank(ii,3) = phy(kk,3);
-
-           DPM_rank(ii,4) = one_hit_skill_dmg(kk,3);
-           DPM_rank(ii,5) = one_hit_skill_dmg(kk,4); 
-           ii = ii+1;
-       end
-       clear k kk iii;
-   elseif c == 1
-       DPM_rank(ii,1) = DPM(k,1);
+   DPM_rank(ii,2) = phy(k,2);
+   DPM_rank(ii,3) = phy(k,3);
    
-       DPM_rank(ii,2) = phy(k,2);
-       DPM_rank(ii,3) = phy(k,3);
-
-       DPM_rank(ii,4) = one_hit_skill_dmg(k,3);
-       DPM_rank(ii,5) = one_hit_skill_dmg(k,4);  
-   end
-  
+   DPM_rank(ii,4) = one_hit_skill_dmg(k,3);
+   DPM_rank(ii,5) = one_hit_skill_dmg(k,4);
 end
-
 for ii=1:a
     DPM_rank(ii,6) = { cell2mat(DPM_rank(ii,6))/10^8 };
 end
-
-

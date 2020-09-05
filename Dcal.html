@@ -1,0 +1,84 @@
+ <!DOCTYPE html>
+ <html>
+   <head>
+     <meta charset="utf-8">
+     <title>Sasibu's Maplestory Page</title>
+
+     <!-- Bootstrap core CSS -->
+     <link rel="stylesheet" href="./bootstrap-4.4.1-dist/css/bootstrap.min.css">
+
+     <!-- Custome styles for this template -->
+     <link rel="stylesheet" href="./bootstrap-4.4.1-dist/css/bootstrap.css">
+     <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/cover/">
+
+    <meta name="msapplication-config" content="/docs/4.4/assets/img/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#563d7c">
+
+    <!-- Custom styles for this template -->
+    <link href="./bootstrap-4.4.1-dist/cover.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+   </head>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <script type="text/javascript">
+
+   function list_t(val){
+     if( val != ""){
+       document.getElementById("mob_search").style.display = "none";
+       document.getElementById(val).style.display="";
+     }
+   }
+
+   </script>
+
+   <body id='cover' class="text-center">
+     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <header>
+            <div class="inner">
+              <h1 class="masthead-brand"><a href="./Home">Sasibu's MapleStory Infomation</a></h1>
+            </div>
+          <!-- <img style=' margin-top:5%; margin-left:20%; margin-right:20%; height:50%; width:50%;' src="https://www.mentor.com/company/news/f1-limitation-on-use-of-cfd-software-could-benefit-more/mainColumnParagraphs/0/column1ColumnParagraphs/0/content_files/file0/Voxdale1_smaller_420.jpg" > -->
+      </header>
+
+      <!-- nav -->
+      <nav style="width:200px; margin-left:20px; margin-top:10%">
+        <ol>
+          <li> <a href="#">보스 DPM</a> </li>
+          <li> <a href="#">사냥 DPM</a> </li>
+        </ol>
+      </nav>
+
+      <!-- Main -->
+      <main role="main" style="margin-left: 14rem; margin-top:-150px;">
+        <div class="container" id="description" style="border-top:1px solid white; border-bottom:1px solid white; padding:1%;">
+            <div Id="mob_search">
+              <p style="text-align:left;">캐릭터 능력치 및 총 공격력/마력을 입력해주세요</p>
+              <table>
+                <thead>
+                  <tr>
+                    <th>정복자</th>
+                    <th>주스탯</th>
+                    <th>보조스탯</th>
+                    <th>추가 주스탯</th>
+                    <th>추가 보조스탯</th>
+                    <th>공격력</th>
+                    <th>마력</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+            <br>
+        </div>
+      </main>
+      <!-- Main Tag == end -->
+
+      <footer style="margin-left: 200px; margin-bottom:20px;">
+        <p>&copy; made by Sasibu</p>
+      </footer>
+
+    </div>
+   </body>
+ </html>
