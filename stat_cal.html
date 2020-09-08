@@ -283,7 +283,7 @@
        }
 
        if( document.getElementById("EAT35").value == 0 && rtn == 0 ){
-         con = confirm("비보 공격력/마력 입력하셨나요?");
+         con = confirm("비보의 공격력/마력 입력하셨나요?");
          if(!con){
            document.getElementById("EAT35").focus();
            rtn = 1;
@@ -335,10 +335,8 @@
 
        if(b2 == "영메"){
          bp = 1.04;
-         at = at *bp;
        }else if(b2 == "스영메"){
          bp = 1.15;
-         at = at *bp;
        }else{
          bp = 1;
        }
@@ -438,8 +436,9 @@
          stat2 = str*4.8+dex;
        }
 
-       //General Formula
+       //General Formula for attacker
        if( stat1 > 0 && stat2 >0 ){
+         at = at *bp; //영메 고려
          min1 = parseInt(stat1/100*at);
          max1 = parseInt(stat2/100*at);
        }
@@ -676,11 +675,12 @@
       <main role="main" class="innercover">
         <br>
         <p> 새로운 계산을 위해서는 F5(새로고침) 해주세요!</p>
+        <p style="font-weight:bold; font-size:20px;"> 아래의 사용법을 꼭 한 번 읽어보시고 사용해주세요!  </p>
+        <p style="font-weight:bold; font-size:20px;"> 능력치를 입력할 경우에는 모든 메이플 용사 및 영웅의 메아리 버프를 끈 후에 입력해주세요! </p>
         <a href="javascript:hide_seek('update')" Id="updateT">업데이트 내역 (펼치기)</a>
         <div Id="update" style="display:none; width:40%; margin:auto; border:1px solid white; text-align:left; padding:1rem;">
-          <h5 style="text-align:center">6/6 업데이트</h5>
-          <p> 1. 사용 방법 안내문 추가</p>
-          <p> 2. 정축/비보 확인 안내 추가</p>
+          <h5 style="text-align:center">9/8 업데이트</h5>
+          <p> 1. 안내문 업데이트</p>
         </div>
         <br>
         <a href="javascript:hide_seek('int')" Id="intT">사용법 (펼치기)</a>
@@ -821,7 +821,7 @@
             <thead>
               <tr>
                 <th colspan="2">순수 투자 능력치</th>
-                <th colspan="2">장비에 의한 추가 능력치</th>
+                <th colspan="2">추가 능력치</th>
                 <th colspan="2">추가 공격력/마력 (방어구)</th>
                 <th colspan="2">추가 공격력/마력 (장신구1)</th>
                 <th colspan="2">추가 공격력/마력 (장신구2)</th>
